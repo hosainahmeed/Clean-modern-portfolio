@@ -1,32 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 
 function Footer() {
-  //TODO :smooth scrolling use with react scroll
   return (
     <div>
-      <footer className="footer footer-center bg-base-200 text-base-content rounded p-10">
+      <footer className="footer footer-center  bg-base-200 text-base-content rounded p-10">
         <h1>LOGO</h1>
-        <nav className="grid grid-flow-col gap-4">
-          <Link>
-            <a className="link link-hover">Go to top</a>
-          </Link>
-          <Link>
-            <a className="link link-hover">My Projects</a>
-          </Link>
-          <Link>
-            <a className="link link-hover">Get in Touch</a>
-          </Link>
-          <Link>
-            <a className="link link-hover">About Me</a>
-          </Link>
-          <Link>
-            <a className="link link-hover">Contact Us</a>
-          </Link>
+        <nav className="grid md:grid-flow-col gap-4">
+          <Link to="hero">Go to top</Link>
+          <Link to="projects" className="cursor-pointer">My Projects</Link>
+          <Link to="contact">Get in Touch</Link>
+          <Link>About Me</Link>
         </nav>
         <div className="h-[2px] bg-black w-full"></div>
         <aside>
           <p>
-            Copyright © {new Date().getFullYear()} - All right reserved by <h1>Hosain Ali</h1>
+            Copyright © {new Date().getFullYear()} - All right reserved by{" "}
+            <h1>Hosain Ali</h1>
           </p>
         </aside>
       </footer>

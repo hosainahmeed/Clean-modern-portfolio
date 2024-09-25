@@ -1,7 +1,9 @@
 
 function AllProject() {
   return (
-    <div>AllProject</div>
+    <div>
+      <h1>all projects</h1>
+    </div>
   )
 }
 

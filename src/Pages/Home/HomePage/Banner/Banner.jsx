@@ -1,25 +1,27 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import img from "../../../../assets/BannerImages/BannerScrollImage/q.jpg";
-import { Button } from "@nextui-org/react";
-import { Link } from "react-router-dom";
-// Placeholder images for the banner
-const images = [img, img, img, img,img,img,img,img,img];
+import { Button, Link } from "@nextui-org/react";
+import { NavLink } from "react-router-dom";
 
-const Banner = () => {
+const images = [img, img, img, img, img, img, img, img, img];
+
+const Banner = ({ projectsRef }) => {
   const controlsRow1 = useAnimation();
   const controlsRow2 = useAnimation();
 
-  useEffect(() => {
-    const duration = 10; // Increase duration for a smoother effect
+  const scrollToProjects = () => {
+    projectsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
-    // First row (scrolls from top to bottom)
+  useEffect(() => {
+    const duration = 30;
+
     controlsRow1.start({
       y: ["0%", "-100%"],
       transition: { repeat: Infinity, duration, ease: "linear" },
     });
 
-    // Second row (scrolls from bottom to top)
     controlsRow2.start({
       y: ["-100%", "0%"],
       transition: { repeat: Infinity, duration, ease: "linear" },
@@ -27,7 +29,10 @@ const Banner = () => {
   }, [controlsRow1, controlsRow2]);
 
   return (
-    <div className="max-w-screen-2xl mx-auto h-screen flex md:flex-row flex-col items-center justify-between">
+    <div
+      id="hero"
+      className="max-w-screen-2xl mx-auto h-[80vh] flex md:flex-row flex-col items-center justify-between"
+    >
       {/* Left Side Text Section */}
       <div className="w-full md:w-1/2 p-10 md:text-start gap-4 text-center md:items-start flex flex-col items-center">
         <h1 className="md:text-4xl lg:text-7xl text-xl font-black">
@@ -37,30 +42,28 @@ const Banner = () => {
           I specialize in creating interactive and user-friendly web
           applications.
         </p>
-        <div className=" flex gap-2">
-        <Button
+        <div className="flex gap-2">
+          <Button
             className="rounded-none bg-black text-white"
             as={Link}
             color="primary"
-            href="#contact"
             variant="flat"
           >
-            Contact
+            <NavLink to="/contact">Contact</NavLink>
           </Button>
           <Button
+            onClick={scrollToProjects}
             className="rounded-none bg-white border-2 border-black text-black"
-            as={Link}
             color="primary"
-            href="#contact"
             variant="flat"
           >
-            projects
+            Projects
           </Button>
         </div>
       </div>
 
       {/* Right Side Scrolling Images */}
-      <div className="md:w-1/2 h-full flex gap-2 overflow-hidden relative">
+      <div className="md:w-1/2 shadow-2xl h-full flex gap-2 overflow-hidden relative">
         <div className="relative w-full h-full">
           {/* First Row (scrolls vertically) */}
           <motion.div
@@ -72,7 +75,7 @@ const Banner = () => {
                 key={index}
                 src={img}
                 alt="Scrolling"
-                className="w-full h-auto"
+                className="w-full h-auto hover:scale-95 transition-all brightness-90 hover:brightness-100 fill-slate-900 hover:opacity-100"
               />
             ))}
           </motion.div>
@@ -89,7 +92,7 @@ const Banner = () => {
                 key={index}
                 src={img}
                 alt="Scrolling"
-                className="w-full h-auto"
+                className="w-full h-auto hover:scale-95 transition-all brightness-90 hover:brightness-100 fill-slate-900 hover:opacity-100"
               />
             ))}
           </motion.div>
