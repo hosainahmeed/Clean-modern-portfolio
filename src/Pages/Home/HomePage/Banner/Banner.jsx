@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import img from "../../../../assets/BannerImages/BannerScrollImage/q.jpg";
 import { Button, Link } from "@nextui-org/react";
 import { NavLink } from "react-router-dom";
-
 const images = [img, img, img, img, img, img, img, img, img];
 
 const Banner = ({ projectsRef }) => {
+
   const controlsRow1 = useAnimation();
   const controlsRow2 = useAnimation();
 
