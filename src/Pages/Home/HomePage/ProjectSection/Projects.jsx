@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@nextui-org/react";
@@ -6,21 +6,24 @@ import { Button } from "@nextui-org/react";
 // Sample project data
 const projectData = [
   {
-    id: 1,
+    _id: 1,
     title: "Weather App",
     description: "A responsive web app to check real-time weather updates.",
-    img: "https://cdn.shopify.com/s/files/1/0902/5292/files/Twitter.jpg?v=1638979734", 
+    img: "https://mixdesign.club/themeforest/blayden/img/demo/screens/1.webp", 
   },
   {
-    id: 2,
+    _id: 2,
     title: "Portfolio Website",
     description: "A personal portfolio website to showcase my work.",
-    img: "https://repository-images.githubusercontent.com/504857779/05714359-7fad-48aa-8770-dd40931774cf",
+    img: "https://mixdesign.club/themeforest/blayden/img/demo/screens/2.webp",
   },
   // Add more projects as needed
 ];
 
 const Projects = React.forwardRef((props, ref) => {
+  const [isInView, setIsInView] = useState(false);
+  const projectsRef = useRef(null);
+
   // Array to hold hover states for each project
   const [hoverStates, setHoverStates] = useState(
     Array(projectData.length).fill(false)
@@ -38,11 +41,48 @@ const Projects = React.forwardRef((props, ref) => {
     setHoverStates(newHoverStates);
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        } else {
+          setIsInView(false);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "-50% 0px -50% 0px", 
+        threshold: 0,
+      }
+    );
+
+    if (projectsRef.current) {
+      observer.observe(projectsRef.current);
+    }
+
+    return () => {
+      if (projectsRef.current) {
+        observer.unobserve(projectsRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div ref={ref} className="projects-container">
-      <div id="projects" className="mt-28 max-w-screen-2xl mx-auto">
-        <div className="flex flex-col gap-6 items-center">
-          <h3>Projects</h3>
+    <div
+      id="projects"
+      ref={(el) => {
+        projectsRef.current = el;
+        if (typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={`projects-container transition-colors pb-28 duration-500 rounded-2xl px-4 ${
+        isInView ? 'bg-black text-white' : 'bg-white text-black'
+      }`}
+    >
+      <div className="mt-28 max-w-screen-2xl mx-auto">
+        <div className="flex flex-col gap-6 text-center  items-center">
+          <h3 className="mt-12">Projects</h3>
           <h3 className="font-black text-2xl md:text-6xl">
             Explore My Recent Work
           </h3>
@@ -50,11 +90,11 @@ const Projects = React.forwardRef((props, ref) => {
         </div>
 
         {projectData.map((project, index) => (
-          <div key={project.id} className="flex flex-col gap-6 items-center mt-28">
+          <div key={project._id} className="flex flex-col gap-6 items-start mt-28">
             <div
               onMouseEnter={() => handleMouseInAnimation(index)}
               onMouseLeave={() => handleMouseOutAnimation(index)}
-              className="w-full h-[650px] relative rounded-xl bg-slate-500 overflow-hidden"
+              className="w-full h-[250px] md:h-[500px] lg:h-[750px] relative rounded-xl bg-slate-500 overflow-hidden"
             >
               <img
                 className="w-full h-full object-cover object-top"
@@ -66,28 +106,28 @@ const Projects = React.forwardRef((props, ref) => {
                 initial={{ y: "100%" }}
                 animate={{ y: hoverStates[index] ? "0%" : "100%" }}
                 transition={{ duration: 0.5 }}
-                className="absolute bottom-0 w-full backdrop-blur-md h-1/2 px-12 pt-8"
+                className="absolute bottom-0 w-full flex items-start gap-4 flex-col bg-black h-1/2 px-12 pt-8"
               >
                 <h1 className="text-white text-5xl font-black">{project.title}</h1>
-                <p>{project.description}</p>
-                <Button>LIVW WEBSITE</Button>
+                <p className=" text-white">{project.description}</p>
+                <Button className="text-black  bg-white">LIVW WEBSITE</Button>
               </motion.div>
             </div>
 
-            <div>
+            <div className="items-start">
               <h1 className="text-3xl font-black">{project.title}</h1>
               <p>{project.description}</p>
             </div>
           </div>
         ))}
 
-        <div className="w-full text-center">
+        <div className="w-full text-center mt-12">
           <Button
-            className="rounded-none bg-white border-2 border-black text-black"
+            className="bg-white border-2 px-8 text-2xl font-black  py-6 border-black text-black"
             color="primary"
             variant="flat"
           >
-            <Link to="/allprojects">All projects</Link>
+            <Link to="/allprojects" >All projects</Link>
           </Button>
         </div>
       </div>

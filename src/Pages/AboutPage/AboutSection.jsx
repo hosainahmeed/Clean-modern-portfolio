@@ -4,7 +4,6 @@ import img1 from "../../assets/BannerImages/BannerScrollImage/q.jpg";
 import img2 from "../../assets/BannerImages/BannerScrollImage/w.jpg";
 import img3 from "../../assets/BannerImages/BannerScrollImage/q.jpg";
 import img4 from "../../assets/BannerImages/BannerScrollImage/w.jpg";
-
 // Dynamic content array
 const textContent = [
   {
@@ -69,9 +68,9 @@ function AboutSection() {
     <div>
       <div className="max-w-screen-2xl mx-auto flex items-start flex-col-reverse md:flex-row justify-between px-4">
         {/* Text Section */}
-        
         <div className="md:w-1/2 w-full mt-[20%]  md:px-12">
         <h1 className="text-4xl font-black p-2 border-2 inline-block rounded-full">HM</h1>
+        <p className="text-2xl uppercase py-4">about me</p>
           {textContent.map((item, index) => (
             <div
               key={index}
@@ -103,7 +102,7 @@ function AboutSection() {
           />
         </motion.div>
       </div>
-      <div className="h-screen"></div>
+      {/* <div className="h-screen"></div> */}
     </div>
   );
 }

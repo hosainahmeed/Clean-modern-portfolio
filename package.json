@@ -12,18 +12,25 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.1",
     "@mui/material": "^6.1.1",
     "@mui/x-data-grid": "^7.18.0",
     "@nextui-org/react": "^2.4.8",
     "@nextui-org/theme": "^2.2.11",
+    "@tanstack/react-query": "^5.59.0",
+    "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.6.0",
+    "glsl-noise": "^0.0.0",
+    "glslify": "^7.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
     "react-icons": "^5.3.0",
     "react-router-dom": "^6.26.2",
-    "react-scroll": "^1.9.0"
+    "react-scroll": "^1.9.0",
+    "sweetalert2": "^11.14.1",
+    "three": "^0.169.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

@@ -19,8 +19,8 @@ function NavbarHeader() {
   const chagedirecotry = location.pathname !== "/";
 
   const handleLinkClick = (path) => {
-    setIsMenuOpen(false); // Close the menu
-    navigate(path); // Navigate to the specified path
+    setIsMenuOpen(false); 
+    navigate(path);
   };
 
   const activeLinkStyle = "bg-black text-white px-6 py-2";
@@ -56,6 +56,17 @@ function NavbarHeader() {
             onClick={() => handleLinkClick("/about")}
           >
             About Me
+          </NavLink>
+        </NavbarItem>
+        <NavbarItem>
+          <NavLink
+            to="/admin"
+            className={({ isActive }) =>
+              `${isActive ? activeLinkStyle : linkStyle}`
+            }
+            onClick={() => handleLinkClick("/admin")}
+          >
+            Admin
           </NavLink>
         </NavbarItem>
 
@@ -117,14 +128,14 @@ function NavbarHeader() {
 
         {/* Mobile menu toggle */}
         <NavbarMenuToggle
-          isOpen={isMenuOpen}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="sm:hidden"
         />
       </NavbarContent>
 
       {/* Mobile dropdown menu */}
-      <NavbarMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}>
+      <NavbarMenu>
         <NavbarMenuItem>
           <NavLink
             to="/"

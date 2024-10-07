@@ -12,8 +12,12 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { SiGmail } from "react-icons/si";
+import { useEffect } from "react";
 
 function Contact() {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const {
     register,
     handleSubmit,
