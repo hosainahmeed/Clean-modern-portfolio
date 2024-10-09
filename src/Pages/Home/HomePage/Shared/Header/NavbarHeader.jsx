@@ -23,12 +23,12 @@ function NavbarHeader() {
     navigate(path);
   };
 
-  const activeLinkStyle = "bg-black text-white px-6 py-2";
+  const activeLinkStyle = "bg-secondary text-primary px-6 py-2";
   const linkStyle =
-    "hover:bg-black hover:text-white transition-all duration-300 p-2 rounded-md";
+    "hover:bg-secondary hover:text-primary transition-all duration-300 p-2 rounded-md";
 
   return (
-    <Navbar>
+    <Navbar className="bg-primary text-secondary">
       {/* Logo on the left side */}
       <NavbarBrand>
         <p className="font-black text-3xl text-inherit">Hosain.</p>
@@ -93,7 +93,7 @@ function NavbarHeader() {
               className={`${linkStyle} cursor-pointer`}
               onClick={() => setIsMenuOpen(false)}
             >
-              My Projects
+            Projects
             </Link>
           </NavbarItem>
         )}
@@ -115,7 +115,7 @@ function NavbarHeader() {
       <NavbarContent justify="end">
         <NavbarItem>
           <Button
-            className="rounded-none bg-black text-white hidden sm:flex"
+            className="rounded-none bg-secondary text-primary hidden sm:flex"
             as={Link}
             color="primary"
             href="#contact"

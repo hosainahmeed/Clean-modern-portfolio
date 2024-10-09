@@ -77,16 +77,16 @@ const Projects = React.forwardRef((props, ref) => {
         else if (ref) ref.current = el;
       }}
       className={`projects-container transition-colors pb-28 duration-500 rounded-2xl px-4 ${
-        isInView ? 'bg-black text-white' : 'bg-white text-black'
+        isInView ? 'bg-secondary text-primary' : 'bg-primary text-secondary'
       }`}
     >
       <div className="mt-28 max-w-screen-2xl mx-auto">
-        <div className="flex flex-col gap-6 text-center  items-center">
-          <h3 className="mt-12">Projects</h3>
-          <h3 className="font-black text-2xl md:text-6xl">
+        <div className="flex flex-col gap-6 text-center items-center">
+          <h3 className="mt-12 text-sm sm:text-base md:text-lg lg:text-xl font-semibold uppercase tracking-wider">Projects</h3>
+          <h2 className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
             Explore My Recent Work
-          </h3>
-          <h3>Here are my latest projects.</h3>
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto">Here are my latest projects, showcasing my skills and creativity.</p>
         </div>
 
         {projectData.map((project, index) => (
@@ -94,7 +94,7 @@ const Projects = React.forwardRef((props, ref) => {
             <div
               onMouseEnter={() => handleMouseInAnimation(index)}
               onMouseLeave={() => handleMouseOutAnimation(index)}
-              className="w-full h-[250px] md:h-[500px] lg:h-[750px] relative rounded-xl bg-slate-500 overflow-hidden"
+              className="w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[650px] relative rounded-xl bg-slate-500 overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.02]"
             >
               <img
                 className="w-full h-full object-cover object-top"
@@ -106,28 +106,25 @@ const Projects = React.forwardRef((props, ref) => {
                 initial={{ y: "100%" }}
                 animate={{ y: hoverStates[index] ? "0%" : "100%" }}
                 transition={{ duration: 0.5 }}
-                className="absolute bottom-0 w-full flex items-start gap-4 flex-col bg-black h-1/2 px-12 pt-8"
+                className="absolute bottom-0 w-full flex items-start gap-4 flex-col bg-secondary bg-opacity-90 backdrop-blur-sm h-1/2 px-6 sm:px-8 md:px-10 lg:px-12 pt-6 sm:pt-8"
               >
-                <h1 className="text-white text-5xl font-black">{project.title}</h1>
-                <p className=" text-white">{project.description}</p>
-                <Button className="text-black  bg-white">LIVW WEBSITE</Button>
+                <h3 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">{project.title}</h3>
+                <p className="text-primary text-sm sm:text-base md:text-lg lg:text-xl">{project.description}</p>
+                <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                  View Project
+                </Button>
               </motion.div>
-            </div>
-
-            <div className="items-start">
-              <h1 className="text-3xl font-black">{project.title}</h1>
-              <p>{project.description}</p>
             </div>
           </div>
         ))}
 
-        <div className="w-full text-center mt-12">
+        <div className="w-full text-center mt-16">
           <Button
-            className="bg-white border-2 px-8 text-2xl font-black  py-6 border-black text-black"
+            className="bg-secondary border-2 px-6 sm:px-8 text-xl sm:text-2xl font-black py-4 sm:py-6 border-primary text-primary hover:bg-primary hover:text-secondary transition-colors duration-300"
             color="primary"
             variant="flat"
           >
-            <Link to="/allprojects" >All projects</Link>
+            <Link to="/allprojects">All Projects</Link>
           </Button>
         </div>
       </div>

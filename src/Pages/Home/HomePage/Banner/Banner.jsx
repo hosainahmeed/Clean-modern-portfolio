@@ -78,7 +78,7 @@ const Banner = ({ projectsRef }) => {
   return (
     <div
       id="hero"
-      className="max-w-screen-2xl  h-[550px] mx-auto md:h-[300px] lg:h-[800px] flex md:flex-row flex-col items-center justify-between"
+      className="max-w-screen-2xl bg-primary text-secondary  h-[550px] mx-auto md:h-[300px] lg:h-[800px] flex md:flex-row flex-col items-center justify-between"
     >
       {/* Left Side Text Section */}
       <div className="w-full md:w-1/2 p-10 md:text-start gap-4 text-center md:items-start flex flex-col items-center">
@@ -91,7 +91,7 @@ const Banner = ({ projectsRef }) => {
         </p>
         <div className="flex gap-2">
           <Button
-            className="rounded-none bg-black text-white"
+            className="rounded-none bg-secondary text-primary"
             as={Link}
             color="primary"
             variant="flat"
@@ -100,7 +100,7 @@ const Banner = ({ projectsRef }) => {
           </Button>
           <Button
             onClick={scrollToProjects}
-            className="rounded-none bg-white border-2 border-black text-black"
+            className="rounded-none bg-primary border-2 border-black text-secondary"
             color="primary"
             variant="flat"
           >
@@ -117,15 +117,15 @@ const Banner = ({ projectsRef }) => {
             className="flex flex-col gap-2 h-full w-full"
             animate={controlsRow1}
           >
-            {/* {images.map((img, index) => (
+            {images.map((img, index) => (
               <img
                 key={index}
                 src={img}
                 alt="Scrolling"
                 className="w-full h-auto hover:scale-95 transition-all brightness-90 hover:brightness-100 fill-slate-900 hover:opacity-100"
               />
-            ))} */}
-            <div>
+            ))}
+            {/* <div>
               {overView.map((item) => (
                 <div className="w-full h-1/3 bg-black mt-2 flex items-center justify-center flex-col rounded-xl text-white" key={item._id}>
                   <h1 className="text-4xl font-black">{item.title}</h1>
@@ -133,7 +133,7 @@ const Banner = ({ projectsRef }) => {
                   <img src={item.image} />
                 </div>
               ))}-
-            </div>
+            </div> */}
           </motion.div>
         </div>
 

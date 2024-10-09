@@ -7,7 +7,7 @@ function Footer() {
   }
   return (
     <div>
-      <footer className="footer footer-center  bg-base-200 text-base-content rounded p-10 mt-12">
+      <footer className="footer footer-center  bg-primary text-secondary rounded p-10 mt-12">
         <h1>LOGO</h1>
         <nav className="grid md:grid-flow-col gap-4">
           <h1 onClick={topScrollHandle}>Go to top</h1>

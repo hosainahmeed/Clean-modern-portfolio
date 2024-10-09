@@ -50,7 +50,7 @@ function SkillSection() {
   return (
     <div
       id="skills"
-      className="pt-28 px-4 lg:px-8 max-w-screen-2xl mx-auto bg-white"
+      className="pt-28 px-4 lg:px-8 max-w-screen-2xl mx-auto text-secondary"
     >
       {/* Left section - text content */}
       <div className="w-full space-y-8 lg:mr-12 text-center lg:text-left">
@@ -63,10 +63,10 @@ function SkillSection() {
           </div>
         ) : (
           <>
-            <h1 className="text-2xl md:text-4xl font-black text-gray-800">
+            <h1 className="text-2xl md:text-4xl font-black text-secondary">
               Showcasing My Skills and Tools: What I Bring to the Table
             </h1>
-            <p className="text-base md:text-lg text-gray-600">
+            <p className="text-base md:text-lg text-secondary">
               As a front-end developer, I specialize in creating dynamic and
               responsive web applications. My expertise lies in utilizing modern
               technologies to deliver exceptional user experiences.
@@ -98,7 +98,7 @@ function SkillSection() {
                       <div
                         className={`${
                           index % 2 === 0 ? "timeline-end" : "timeline-start"
-                        } timeline-box`}
+                        } timeline-box border-2 border-secondary bg-transparent`}
                       >
                         <h2 className="font-semibold">{skill.name}</h2>
                         <button
@@ -154,7 +154,7 @@ function SkillSection() {
                       <div
                         className={`${
                           index % 2 === 0 ? "timeline-end" : "timeline-start"
-                        } timeline-box`}
+                        } timeline-box border-2 border-secondary bg-transparent`}
                       >
                         <h2 className="font-semibold">{skill.name}</h2>
                         <button
@@ -207,7 +207,7 @@ function SkillSection() {
                       <div
                         className={`${
                           index % 2 === 0 ? "timeline-end" : "timeline-start"
-                        } timeline-box`}
+                        } timeline-box border-2 border-secondary bg-transparent`}
                       >
                         <h2 className="font-semibold">{skill.name}</h2>
                         <button
@@ -228,14 +228,14 @@ function SkillSection() {
               {/* Pagination Controls */}
               <div className="flex justify-center gap-4 mt-4">
                 <button
-                  className="btn btn-xs btn-primary"
+                  className="btn btn-xs bg-secondary text-primary"
                   disabled={currentPage.tools === 0}
                   onClick={() => handlePageChange("tools", "prev")}
                 >
                   Previous
                 </button>
                 <button
-                  className="btn btn-xs btn-primary"
+                  className="btn btn-xs bg-secondary text-primary"
                   disabled={
                     currentPage.tools + 1 >=
                     Math.ceil(
