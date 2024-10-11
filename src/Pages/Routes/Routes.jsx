@@ -10,6 +10,7 @@ import ManageSkills from "../AdminHome/Dashboard/ManageSkills";
 import ManageContent from "../AdminHome/Dashboard/ManageContent";
 import ManageProfile from "../AdminHome/Dashboard/ManageProfile";
 import Settings from "../AdminHome/Dashboard/Settings";
+import Login from "../AboutPage/Login";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutSection />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
       {
         path: "admin",

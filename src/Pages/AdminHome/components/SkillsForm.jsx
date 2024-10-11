@@ -79,7 +79,7 @@ const SkillForm = () => {
     <div className="max-w-screen-xl mx-auto p-6">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="mb-12 bg-black rounded-lg shadow-lg p-6 space-y-4"
+        className="mb-12 rounded-lg shadow-lg p-6 space-y-4"
       >
         <div className="form-control w-full">
           <label className="label">

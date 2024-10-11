@@ -1,0 +1,33 @@
+{
+    "name": "Md. Hosain Ali",
+    "age": 22,
+    "location": "Dhaka, Bangladesh",
+    "email": "your-email@example.com",
+    "bio": "Front-End developer with a passion for UX and new technologies.",
+    "current_role": "Intern at PeopleNTech",
+    "skills": ["React", "Tailwind CSS", "JavaScript", "Node.js"],
+    "education": {
+      "institution": "Jessore Polytechnic Institute",
+      "degree": "Diploma in Computer Science",
+      "graduation_year": 2024
+    },
+    "interests": ["Cricket", "Anime", "Web Development"],
+    "projects": [
+      {
+        "title": "Recipe App",
+        "description": "A recipe app with ingredient tracker",
+        "link": "https://your-recipe-app-link.com"
+      },
+      {
+        "title": "Portfolio Website",
+        "description": "A personal portfolio to showcase my projects",
+        "link": "https://your-portfolio-link.com"
+      }
+    ],
+    "social_links": {
+      "linkedin": "https://linkedin.com/in/demolinkedin",
+      "github": "https://github.com/your-github-username",
+      "portfolio": "https://deportfolio.com"
+    }
+  }
+  

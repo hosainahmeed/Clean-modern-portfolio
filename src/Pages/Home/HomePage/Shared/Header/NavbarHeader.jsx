@@ -46,6 +46,15 @@ function NavbarHeader() {
           >
             Home
           </NavLink>
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              `${isActive ? activeLinkStyle : linkStyle}`
+            }
+            onClick={() => handleLinkClick("/")}
+          >
+            Login
+          </NavLink>
         </NavbarItem>
         <NavbarItem>
           <NavLink
@@ -56,17 +65,6 @@ function NavbarHeader() {
             onClick={() => handleLinkClick("/about")}
           >
             About Me
-          </NavLink>
-        </NavbarItem>
-        <NavbarItem>
-          <NavLink
-            to="/admin"
-            className={({ isActive }) =>
-              `${isActive ? activeLinkStyle : linkStyle}`
-            }
-            onClick={() => handleLinkClick("/admin")}
-          >
-            Admin
           </NavLink>
         </NavbarItem>
 

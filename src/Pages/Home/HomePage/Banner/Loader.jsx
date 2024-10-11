@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 const Loader = () => {
@@ -105,12 +105,12 @@ const Loader = () => {
       backgroundColor: "black"}}></div>
       <div className="loader-content absolute inset-0 flex flex-col items-center justify-center text-white">
         <div className="relative">
-          <h2 className="text-transparent text-[13vw] md:text-[10vw] lg:text-[8vw] font-light tracking-wide text-center transform -rotate-7 outline-none stroke-current rotate-text">
+          <h2 className="text-transparent text-nowrap text-[13vw] md:text-[10vw] lg:text-[8vw] font-light tracking-wide text-center transform -rotate-7 outline-none stroke-current rotate-text">
             Hosain ali
           </h2>
           <h1
             ref={textRef}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl md:text-4xl lg:text-5xl font-bold -rotate-7"
+            className="absolute text-nowrap top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-3xl md:text-4xl lg:text-5xl font-bold -rotate-7"
           >
             Hosain ali
           </h1>

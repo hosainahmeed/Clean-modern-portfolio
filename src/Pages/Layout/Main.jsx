@@ -5,8 +5,7 @@ import { useEffect, useState } from "react";
 import Loader from "../Home/HomePage/Banner/Loader";
 
 function Main() {
-  const { pathname } = useLocation();
-  const [isAdmin, setIsAdmin] = useState(false);
+  const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -14,24 +13,24 @@ function Main() {
       setIsLoading(false);
     }, 4000);
   }, []);
-  
-  useEffect(() => {
-    if (pathname.includes("/admin")) {
-      setIsAdmin(true);
-    } else {
-      setIsAdmin(false);
-    }
-  }, [pathname]);
 
+  const visualHeaderFooter =
+    location.pathname === "/login" || location.pathname === "/admin";
   if (isLoading) {
     return <Loader />;
   }
 
   return (
     <div>
-      {isAdmin ? "" : <NavbarHeader></NavbarHeader>}
-      <Outlet></Outlet>
-      {isAdmin ? "" : <Footer></Footer>}
+      {visualHeaderFooter ? (
+        <Outlet></Outlet>
+      ) : (
+        <>
+          <NavbarHeader></NavbarHeader>
+          <Outlet></Outlet>
+          <Footer></Footer>
+        </>
+      )}
     </div>
   );
 }

@@ -1,110 +1,101 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../../public/hooks/useAxios";
+import { ArrowForward } from "@mui/icons-material";
 import { motion } from "framer-motion";
-import img1 from "../../assets/BannerImages/BannerScrollImage/q.jpg";
-import img2 from "../../assets/BannerImages/BannerScrollImage/w.jpg";
-import img3 from "../../assets/BannerImages/BannerScrollImage/q.jpg";
-import img4 from "../../assets/BannerImages/BannerScrollImage/w.jpg";
-// Dynamic content array
-const textContent = [
-  {
-    title: "Who I am.?",
-    description:
-      "My name is Caleb Raney and I’m a human being. I mean let’s be real, can you really sum up who someone is with a couple of fun facts?",
-    image: img1,
-  },
-  {
-    title: "What I do.?",
-    description:
-      "I am a full time freelance designer. While I specialize in creating brand identities and websites I love variety, and love taking on unique creative challenges. If you want to make a difference or re-imagine the world we live in I’d love to be a part of it.",
-    image: img2,
-  },
-  {
-    title: "Where I’m from.?",
-    description:
-      "I believe design makes a real tangible impact on the world and plays a huge (albeit, sometimes subtle) role in how people understand issues, people, and products. I love design because I think it makes the world a more beautiful and connected place.",
-    image: img3,
-  },
-  {
-    title: "Why development?",
-    description:
-      "Right now. Actually... a more accurate thing to say is between 1 & 2 business days, I usually reply to emails really quickly (except on weekends when I avoid them like the plague). So use the contact form below and lets get in touch!",
-    image: img4,
-  },
-];
 
-function AboutSection() {
-  const [activeImage, setActiveImage] = useState(textContent[0].image); 
-  const titleRefs = useRef([]); 
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
+const AboutSection = () => {
+  const [aboutData, setAboutData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
+  // Fetch the data
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = entry.target.getAttribute("data-index");
-            setActiveImage(textContent[index].image);
-          }
-        });
-      },
-      { root: null, threshold: 0.5 }
-    );
-
-    titleRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-
-    return () => {
-      titleRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
+    const fetchData = async () => {
+      try {
+        const response = await axiosPublic.get("/about");
+        setAboutData(response.data[0]);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
     };
-  }, []);
+
+    fetchData();
+  }, [axiosPublic]);
+
+  if (loading) return <p>Loading...</p>;
+  if (!aboutData) return <p>No data found</p>; // Guard against null
 
   return (
-    <div>
-      <div className="max-w-screen-2xl mx-auto flex items-start flex-col-reverse md:flex-row justify-between px-4">
+    <div className="max-w-screen-2xl mx-auto px-4 py-10">
+      <motion.div
+        className="flex flex-col-reverse md:flex-row justify-between items-start"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         {/* Text Section */}
-        <div className="md:w-1/2 w-full mt-[20%]  md:px-12">
-        <h1 className="text-4xl font-black p-2 border-2 inline-block rounded-full">HM</h1>
-        <p className="text-2xl uppercase py-4">about me</p>
-          {textContent.map((item, index) => (
-            <div
-              key={index}
-              ref={(el) => (titleRefs.current[index] = el)} 
-              data-index={index} 
-              className="text-4xl md:text-3xl font-bold leading-tight py-8 md:py-12"
-            >
-              <h2>{item.title}</h2>
-              <p className="text-sm font-normal md:text-base mt-4">{item.description}</p>
+        <div className="md:w-1/2 w-full mt-[20%] md:px-12">
+          <h1 className="text-6xl font-black text-gradient p-2 border-2 inline-block rounded-full mb-4">
+            HM
+          </h1>
+          <p className="text-3xl uppercase py-4 text-gray-600">About Me</p>
+
+          {aboutData.aboutSection.questions.map((item) => (
+            <div key={item.id} className="py-8 md:py-12">
+              <h2 className="text-5xl md:text-4xl font-bold text-blue-700">
+                {item.title}
+              </h2>
+              <p className="text-base md:text-lg font-normal mt-4">
+                {item.description}
+              </p>
               <div className="divider"></div>
             </div>
           ))}
+
+          {/* Extra Details */}
+          <div className="py-8 md:py-12">
+            <h2 className="text-5xl md:text-4xl font-bold text-blue-700">
+              My Skills
+            </h2>
+            <p className="text-base md:text-lg font-normal mt-4">
+              JavaScript, React, Node.js, Express, MongoDB, Tailwind CSS, GSAP
+            </p>
+            <div className="divider"></div>
+          </div>
+
+          <div className="py-8 md:py-12">
+            <h2 className="text-5xl md:text-4xl font-bold text-blue-700">
+              Hobbies
+            </h2>
+            <p className="text-base md:text-lg font-normal mt-4">
+              I enjoy coding, exploring new technologies, and watching anime.
+            </p>
+            <div className="divider"></div>
+          </div>
+
+          <motion.a
+            href="#contact"
+            className="mt-6 inline-block bg-blue-600 text-white py-2 px-4 rounded-full shadow-lg transition duration-300 hover:bg-blue-700"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <ArrowForward />
+            Contact Me
+          </motion.a>
         </div>
 
-        {/* Image Section with Framer Motion */}
-        <motion.div
-          className="md:w-1/2 md:min-h-[80vh] sticky md:top-48 bg-cover bg-center md:ml-12"
-          key={activeImage}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration:2 }}
-        >
-          <motion.img
-            className="w-full h-full object-cover"
-            src={activeImage}
-            alt="Dynamic"
-            layoutId={activeImage}
+        {/* Three.js Image Section */}
+        <div className="md:w-1/2 md:min-h-[80vh] sticky md:top-48 md:ml-12">
+          <img
+            src={aboutData.aboutSection.image.src}
+            alt={aboutData.aboutSection.image.alt}
           />
-        </motion.div>
-      </div>
-      {/* <div className="h-screen"></div> */}
+        </div>
+      </motion.div>
     </div>
   );
-}
+};
 
 export default AboutSection;

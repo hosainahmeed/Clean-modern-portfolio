@@ -24,7 +24,6 @@ function SkillSection() {
     },
   });
 
-
   // Handling skill click
   const handleSkillClick = (skill) => {
     setSelectedSkill(skill);

@@ -93,7 +93,7 @@ function ManageSkills() {
             {[1, 2, 3].map((index) => (
               <div key={index} className="mb-8">
                 <Skeleton className="h-6 w-1/3 mb-2 rounded-lg" />
-                <div className="bg-black shadow-md rounded-lg overflow-hidden">
+                <div className="shadow-md rounded-lg overflow-hidden">
                   <div className="p-4">
                     {[1, 2, 3].map((itemIndex) => (
                       <div key={itemIndex} className="flex items-center gap-3 mb-4">
@@ -123,7 +123,7 @@ function ManageSkills() {
             {Object.entries(categorizedSkills).map(([category, categorySkills]) => (
               <div key={category} className="mb-8">
                 <h3 className="text-lg font-semibold mb-2">{category}</h3>
-                <div className="bg-black shadow-md rounded-lg overflow-hidden">
+                <div className="shadow-md rounded-lg overflow-hidden">
                   <table className="w-full">
                     <thead className="bg-gray-200">
                       <tr>
