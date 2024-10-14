@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Home/Home";
 import AllProject from "../AllProject/AllProject";
-import Contact from "../Contact/Contact";
 import AboutSection from "../AboutPage/AboutSection";
 import Admin from "../AdminHome/AdminHome/Admin";
 import ManageProjects from "../AdminHome/Dashboard/ManageProjects";
@@ -11,6 +10,7 @@ import ManageContent from "../AdminHome/Dashboard/ManageContent";
 import ManageProfile from "../AdminHome/Dashboard/ManageProfile";
 import Settings from "../AdminHome/Dashboard/Settings";
 import Login from "../AboutPage/Login";
+import AdminSecure from "../AdminHome/AdminHome/AdminSecure";
 
 const router = createBrowserRouter([
   {
@@ -26,10 +26,6 @@ const router = createBrowserRouter([
         element: <AllProject />,
       },
       {
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
         path: "/about",
         element: <AboutSection />,
       },
@@ -39,7 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path: "admin",
-        element: <Admin />,
+        element: (
+          <AdminSecure>
+            <Admin />
+          </AdminSecure>
+        ),
         children: [
           { index: true, element: <Home /> },
           { path: "manage-projects", element: <ManageProjects /> },

@@ -1,31 +1,19 @@
-import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../public/hooks/useAxios";
-import { ArrowForward } from "@mui/icons-material";
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
 
 const AboutSection = () => {
-  const [aboutData, setAboutData] = useState(null);
-  const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
+  const { data: aboutData, isLoading } = useQuery({
+    queryKey: ["about"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/about");
+      return res.data[0];
+    },
+  });
 
-  // Fetch the data
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosPublic.get("/about");
-        setAboutData(response.data[0]);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [axiosPublic]);
-
-  if (loading) return <p>Loading...</p>;
-  if (!aboutData) return <p>No data found</p>; // Guard against null
+  if (isLoading) return <p>Loading...</p>;
+  if (!aboutData || !aboutData.aboutSection) return <p>No data found</p>;
 
   return (
     <div className="max-w-screen-2xl mx-auto px-4 py-10">
@@ -37,7 +25,7 @@ const AboutSection = () => {
       >
         {/* Text Section */}
         <div className="md:w-1/2 w-full mt-[20%] md:px-12">
-          <h1 className="text-6xl font-black text-gradient p-2 border-2 inline-block rounded-full mb-4">
+          <h1 className="text-6xl font-black text-gradient px-4 py-2 border-2 inline-block rounded-full mb-4">
             HM
           </h1>
           <p className="text-3xl uppercase py-4 text-gray-600">About Me</p>
@@ -74,16 +62,6 @@ const AboutSection = () => {
             </p>
             <div className="divider"></div>
           </div>
-
-          <motion.a
-            href="#contact"
-            className="mt-6 inline-block bg-blue-600 text-white py-2 px-4 rounded-full shadow-lg transition duration-300 hover:bg-blue-700"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <ArrowForward />
-            Contact Me
-          </motion.a>
         </div>
 
         {/* Three.js Image Section */}

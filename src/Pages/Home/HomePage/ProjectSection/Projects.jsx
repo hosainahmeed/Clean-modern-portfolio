@@ -9,7 +9,7 @@ const projectData = [
     _id: 1,
     title: "Weather App",
     description: "A responsive web app to check real-time weather updates.",
-    img: "https://mixdesign.club/themeforest/blayden/img/demo/screens/1.webp", 
+    img: "https://mixdesign.club/themeforest/blayden/img/demo/screens/1.webp",
   },
   {
     _id: 2,
@@ -52,7 +52,7 @@ const Projects = React.forwardRef((props, ref) => {
       },
       {
         root: null,
-        rootMargin: "-50% 0px -50% 0px", 
+        rootMargin: "-50% 0px -50% 0px",
         threshold: 0,
       }
     );
@@ -73,24 +73,31 @@ const Projects = React.forwardRef((props, ref) => {
       id="projects"
       ref={(el) => {
         projectsRef.current = el;
-        if (typeof ref === 'function') ref(el);
+        if (typeof ref === "function") ref(el);
         else if (ref) ref.current = el;
       }}
       className={`projects-container transition-colors pb-28 duration-500 rounded-2xl px-4 ${
-        isInView ? 'bg-secondary text-primary' : 'bg-primary text-secondary'
+        isInView ? "bg-secondary text-primary" : "bg-primary text-secondary"
       }`}
     >
       <div className="mt-28 max-w-screen-2xl mx-auto">
         <div className="flex flex-col gap-6 text-center items-center">
-          <h3 className="mt-12 text-sm sm:text-base md:text-lg lg:text-xl font-semibold uppercase tracking-wider">Projects</h3>
+          <h3 className="mt-12 text-sm sm:text-base md:text-lg lg:text-xl font-semibold uppercase tracking-wider">
+            Works
+          </h3>
           <h2 className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
             Explore My Recent Work
           </h2>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto">Here are my latest projects, showcasing my skills and creativity.</p>
+          <p className="text-base  sm:text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto">
+            Here are my latest Works
+          </p>
         </div>
 
         {projectData.map((project, index) => (
-          <div key={project._id} className="flex flex-col gap-6 items-start mt-28">
+          <div
+            key={project._id}
+            className="flex flex-col gap-6 items-start mt-28"
+          >
             <div
               onMouseEnter={() => handleMouseInAnimation(index)}
               onMouseLeave={() => handleMouseOutAnimation(index)}
@@ -101,19 +108,48 @@ const Projects = React.forwardRef((props, ref) => {
                 src={project.img}
                 alt={project.title}
               />
-
               <motion.div
                 initial={{ y: "100%" }}
                 animate={{ y: hoverStates[index] ? "0%" : "100%" }}
                 transition={{ duration: 0.5 }}
-                className="absolute bottom-0 w-full flex items-start gap-4 flex-col bg-secondary bg-opacity-90 backdrop-blur-sm h-1/2 px-6 sm:px-8 md:px-10 lg:px-12 pt-6 sm:pt-8"
+                className="absolute bottom-0 w-full hidden md:flex items-start gap-4 flex-col bg-secondary bg-opacity-90 backdrop-blur-sm h-1/2 px-6 sm:px-8 md:px-10 lg:px-12 pt-6 sm:pt-8"
               >
-                <h3 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">{project.title}</h3>
-                <p className="text-primary text-sm sm:text-base md:text-lg lg:text-xl">{project.description}</p>
-                <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                  View Project
-                </Button>
+                <h3 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">
+                  {project.title}
+                </h3>
+                <p className="text-primary text-sm sm:text-base md:text-lg lg:text-xl">
+                  {project.description}
+                </p>
+                <div className="flex gap-2">
+                  <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                    View Project
+                  </Button>
+                  <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                    Clien side code
+                  </Button>
+                  <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                    Server side code
+                  </Button>
+                  <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                    Details Projects
+                  </Button>
+                </div>
               </motion.div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 md:hidden">
+              <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                View Project
+              </Button>
+              <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                Clien side code
+              </Button>
+              <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                Server side code
+              </Button>
+              <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                Details Projects
+              </Button>
             </div>
           </div>
         ))}

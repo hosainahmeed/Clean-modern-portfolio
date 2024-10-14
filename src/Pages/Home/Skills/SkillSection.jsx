@@ -51,7 +51,7 @@ function SkillSection() {
       id="skills"
       className="pt-28 px-4 lg:px-8 max-w-screen-2xl mx-auto text-secondary"
     >
-      {/* Left section - text content */}
+      {/* top section - text content */}
       <div className="w-full space-y-8 lg:mr-12 text-center lg:text-left">
         {isSkillsLoading ? (
           <div className="w-full flex items-center gap-3">
@@ -99,13 +99,14 @@ function SkillSection() {
                           index % 2 === 0 ? "timeline-end" : "timeline-start"
                         } timeline-box border-2 border-secondary bg-transparent`}
                       >
-                        <h2 className="font-semibold">{skill.name}</h2>
-                        <button
+                        <img className="w-12 h-12 object-cover h-auto" src={skill?.image} alt={`${skill.name} image`} />
+                        {/* <h2 className="font-semibold">{skill.name}</h2> */}
+                        {/* <button
                           className="btn btn-xs btn-info"
                           onClick={() => handleSkillClick(skill)}
                         >
                           Details
-                        </button>
+                        </button> */}
                       </div>
                       <div className="timeline-middle">
                         <IoCheckmarkCircleSharp />
@@ -118,14 +119,14 @@ function SkillSection() {
               {/* Pagination Controls */}
               <div className="flex justify-center gap-4 mt-4">
                 <button
-                  className="btn btn-xs btn-primary"
+                  className="btn btn-xs text-white bg-secondary"
                   disabled={currentPage.frontend === 0}
                   onClick={() => handlePageChange("frontend", "prev")}
                 >
                   Previous
                 </button>
                 <button
-                  className="btn btn-xs btn-primary"
+                  className="btn btn-xs text-white bg-secondary"
                   disabled={
                     currentPage.frontend + 1 >=
                     Math.ceil(
@@ -153,15 +154,16 @@ function SkillSection() {
                       <div
                         className={`${
                           index % 2 === 0 ? "timeline-end" : "timeline-start"
-                        } timeline-box border-2 border-secondary bg-transparent`}
+                        } timeline-box border-2 border-secondary bg-transparent flex flex-col items-center gap-3`}
                       >
-                        <h2 className="font-semibold">{skill.name}</h2>
-                        <button
+                        <img className="w-12 h-12 object-cover" src={skill?.image} alt={`${skill.name} image`} />
+                        {/* <h2 className="font-semibold">{skill.name}</h2> */}
+                        {/* <button
                           className="btn btn-xs btn-info"
                           onClick={() => handleSkillClick(skill)}
                         >
                           Details
-                        </button>
+                        </button> */}
                       </div>
                       <div className="timeline-middle">
                         <IoCheckmarkCircleSharp />
@@ -208,13 +210,14 @@ function SkillSection() {
                           index % 2 === 0 ? "timeline-end" : "timeline-start"
                         } timeline-box border-2 border-secondary bg-transparent`}
                       >
-                        <h2 className="font-semibold">{skill.name}</h2>
-                        <button
+                        <img className="w-12 h-12 object-cover" src={skill?.image} alt={`${skill.name} image`} />
+                        {/* <h2 className="font-semibold">{skill.name}</h2> */}
+                        {/* <button
                           className="btn btn-xs btn-info"
                           onClick={() => handleSkillClick(skill)}
                         >
                           Details
-                        </button>
+                        </button> */}
                       </div>
                       <div className="timeline-middle">
                         <IoCheckmarkCircleSharp />
@@ -261,9 +264,9 @@ function SkillSection() {
                 Skill: {selectedSkill.name}
               </h1>
               <img
-                src={selectedSkill.image}
+                src={selectedSkill?.image}
                 alt={selectedSkill.name}
-                className="w-full h-48 object-cover rounded-lg mb-4"
+                className="w-48 object-cover rounded-lg mb-4"
               />
               <p className="font-semibold">
                 Proficiency: {selectedSkill.proficiency}

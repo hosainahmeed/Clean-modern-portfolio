@@ -12,12 +12,8 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { SiGmail } from "react-icons/si";
-import { useEffect } from "react";
 
 function Contact() {
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
   const {
     register,
     handleSubmit,
@@ -38,9 +34,9 @@ function Contact() {
   }));
 
   return (
-    <div className="max-w-screen-2xl mx-auto">
-      <div className="bg-[#07332F] card mx-2 p-4 md:p-[100px] mt-28 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="text-white w-full md:w-2/4">
+    <div id="contact" className="max-w-screen-2xl mx-auto">
+      <div className="bg-primary border-secondary  shadow-lg card mx-2 p-4  md:p-[100px] mt-28 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="text-black w-full md:w-2/4">
           <h1 className="text-2xl md:text-4xl my-2">Contact Me</h1>
           <p className="my-2">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -48,16 +44,16 @@ function Contact() {
             quae ab illo inventore veritatis et quasi.
           </p>
           <ContactInfo
-            icon={<FaPhoneAlt size={18} color="#ffd700" />}
+            icon={<FaPhoneAlt size={18} color="#222" />}
             text="+88 01795 87 48 29"
           />
           <div className="h-[2px] my-2 bg-[#F7A582] block md:hidden"></div>
           <ContactInfo
-            icon={<CiLocationOn size={18} color="#ffd700" />}
+            icon={<CiLocationOn size={18} color="#222" />}
             text="Daulatpur, Kushtia, Bangladesh"
           />
           <ContactInfo
-            icon={<SiGmail  size={18} color="#ffd700" />}
+            icon={<SiGmail  size={18} color="#222" />}
             text="hosainahmed534745@gmail.com"
           />
         </div>
@@ -81,7 +77,7 @@ function Contact() {
           <textarea
             placeholder="Massage"
             type="text"
-            className="w-full resize-none text-white px-2 py-2 col-span-2 rounded-xl h-28 bg-[#133D39]"
+            className="w-full resize-none text-white px-2 py-2 col-span-2 rounded-xl h-28 bg-secondary border-2 border-primary"
             {...register("massage", { required: true })}
           ></textarea>
           {errors.massage?.type === "required" && (
@@ -90,7 +86,7 @@ function Contact() {
             </span>
           )}
           <input
-            className="col-span-2 btn bg-[#F7A582] border-none"
+            className="col-span-2 btn bg-[#222] text-white hover:bg-[#dadada] hover:text-black border-none"
             type="submit"
           />
         </form>
@@ -100,7 +96,7 @@ function Contact() {
           <h1 className="text-4xl font-black">
             Social Contact and Information
           </h1>
-          <h3>For more information you can visit...</h3>
+          <h3 className="text-xl mt-4">For more information you can visit...</h3>
 
           <Box sx={{ flexGrow: 1, marginTop: "64px" }}>
             <Grid container spacing={2}>
@@ -175,7 +171,7 @@ function Contact() {
 const ContactInfo = ({ icon, text }) => (
   <div className="flex items-center mt-4">
     {icon}
-    <h1 className="text-xl ml-4">{text}</h1>
+    <h1 className="text-base md:text-xl ml-4">{text}</h1>
   </div>
 );
 
@@ -184,7 +180,7 @@ const InputField = ({ type, placeholder, register, error }) => (
     <input
       type={type}
       placeholder={placeholder}
-      className="input input-bordered w-full max-w-xs bg-[#133D39] "
+      className="input input-bordered w-full max-w-xs bg-secondary border-2 border-primary "
       {...register}
     />
     {error && <ErrorMessage message={`${placeholder} is required`} />}

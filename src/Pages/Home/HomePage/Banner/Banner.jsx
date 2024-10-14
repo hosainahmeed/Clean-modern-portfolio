@@ -1,9 +1,17 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import img from "../../../../assets/BannerImages/BannerScrollImage/q.jpg";
+import img2 from "../../../../assets/BannerImages/BannerScrollImage/IMG_4978.jpg";
+import img3 from "../../../../assets/BannerImages/BannerScrollImage/orig_BG-SN-2009-02-0713.jpg";
+import img4 from "../../../../assets/BannerImages/BannerScrollImage/w.jpg";
+import img5 from "../../../../assets/BannerImages/BannerScrollImage/IMG_4988.jpg";
+import img6 from "../../../../assets/BannerImages/BannerScrollImage/IMG_4978.jpg";
+import img7 from "../../../../assets/BannerImages/BannerScrollImage/IMG_4978.jpg";
+import img8 from "../../../../assets/BannerImages/BannerScrollImage/IMG_4978.jpg";
+import img9 from "../../../../assets/BannerImages/BannerScrollImage/IMG_4978.jpg";
 import { Button, Link } from "@nextui-org/react";
 import { NavLink } from "react-router-dom";
-const images = [img, img, img, img, img, img, img, img, img];
+const images = [img, img2, img3, img4, img5, img6, img7, img8, img9];
 const overView = [
   {
     _id: 1,
@@ -62,7 +70,7 @@ const Banner = ({ projectsRef }) => {
   };
 
   useEffect(() => {
-    const duration = 30;
+    const duration = 50;
 
     controlsRow1.start({
       y: ["0%", "-100%"],
@@ -82,7 +90,7 @@ const Banner = ({ projectsRef }) => {
     >
       {/* Left Side Text Section */}
       <div className="w-full md:w-1/2 p-10 md:text-start gap-4 text-center md:items-start flex flex-col items-center">
-        <h1 className="md:text-4xl lg:text-7xl text-xl font-black">
+        <h1 className="text-4xl md:text-5xl lg:text-7xl font-black">
           Hi, I’m Hosain, a Front-End Developer
         </h1>
         <p className="text-base md:text-xl">
@@ -96,7 +104,7 @@ const Banner = ({ projectsRef }) => {
             color="primary"
             variant="flat"
           >
-            <NavLink to="/contact">Contact</NavLink>
+            <Link to="contact">Contact</Link>
           </Button>
           <Button
             onClick={scrollToProjects}
@@ -159,3 +167,51 @@ const Banner = ({ projectsRef }) => {
 };
 
 export default Banner;
+
+// function Banner({projectsRef}) {
+//   const scrollToProjects = () => {
+//     projectsRef.current?.scrollIntoView({ behavior: "smooth" });
+//   };
+//   return (
+//     <div className="px-28 relative bg-green-700 py-28">
+//       <div className=" w-full px-28 border-2 justify-center  p-10 md:text-start gap-4 text-center md:items-start flex flex-col items-center">
+//          <h1 className="md:text-4xl lg:text-7xl text-xl font-black">
+//            Hi, I’m Hosain, a Front-End Developer
+//          </h1>
+//          <p className="text-base md:text-xl">
+//            I specialize in creating interactive and user-friendly web
+//            applications.
+//          </p>
+//          <div className="flex gap-2">
+//            <Button
+//              className="rounded-none bg-secondary text-primary"
+//              as={Link}
+//              color="primary"
+//              variant="flat"
+//            >
+//              <NavLink to="/contact">Contact</NavLink>
+//            </Button>
+//            <Button
+//              onClick={scrollToProjects}
+//              className="rounded-none bg-primary border-2 border-black text-secondary"
+//              color="primary"
+//              variant="flat"
+//            >
+//              Projects
+//            </Button>
+//          </div>
+//          <div style={{
+//            background: "rgba(155, 55, 77, 0.12",
+//            borderRadius: "16px",
+//            boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+//            backdropFilter: "blur(5px)",
+//            WebkitBackdropFilter: "blur(5px)",
+//            border: "1px solid rgba(155, 55, 77, 0.53)",
+           
+//          }} className="absolute top-0 left-0 w-full h-full"></div>
+//        </div>
+//     </div>
+//   )
+// }
+
+// export default Banner

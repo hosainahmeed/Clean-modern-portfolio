@@ -116,15 +116,15 @@ function AllProject() {
   };
 
   return (
-    <div className="mx-auto px-4 py-8">
+    <div className="max-w-screen-2xl mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-8 text-center">All Projects</h1>
-      <motion.div layout className="grid grid-1 lg:grid-cols-8 gap-2">
+      <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-8 gap-2">
         <AnimatePresence>
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
               className={`${
-                index % 4 === 0 || index % 4 === 3 ? 'lg:col-span-5' : 'lg:col-span-3'
+                index % 3 === 0 ? 'lg:col-span-8' : 'lg:col-span-4'
               }`}
             >
               <ProjectCard 

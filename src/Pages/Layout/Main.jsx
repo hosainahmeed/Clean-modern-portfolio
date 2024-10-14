@@ -15,9 +15,20 @@ function Main() {
   }, []);
 
   const visualHeaderFooter =
-    location.pathname === "/login" || location.pathname === "/admin";
+    location.pathname.toLowerCase() === "/login" ||
+    location.pathname.toLowerCase() === "/admin";
+  const hideFooter = location.pathname.toLowerCase() === "/about";
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (hideFooter) {
+    return (
+      <>
+        <NavbarHeader></NavbarHeader>
+        <Outlet></Outlet>
+      </>
+    );
   }
 
   return (
