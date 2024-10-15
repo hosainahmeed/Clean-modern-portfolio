@@ -17,6 +17,7 @@ const AboutSection = () => {
 
   return (
     <div className="max-w-screen-2xl mx-auto px-4 py-10">
+
       <motion.div
         className="flex flex-col-reverse md:flex-row justify-between items-start"
         initial={{ opacity: 0 }}
@@ -25,7 +26,7 @@ const AboutSection = () => {
       >
         {/* Text Section */}
         <div className="md:w-1/2 w-full mt-[20%] md:px-12">
-          <h1 className="text-6xl font-black text-gradient px-4 py-2 border-2 inline-block rounded-full mb-4">
+          <h1 className="text-6xl font-semibold text-gradient px-4 py-2 border-2 inline-block rounded-full mb-4">
             HM
           </h1>
           <p className="text-3xl uppercase py-4 text-gray-600">About Me</p>
@@ -72,6 +73,7 @@ const AboutSection = () => {
           />
         </div>
       </motion.div>
+      
     </div>
   );
 };

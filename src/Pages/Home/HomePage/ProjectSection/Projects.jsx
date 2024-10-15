@@ -80,12 +80,12 @@ const Projects = React.forwardRef((props, ref) => {
         isInView ? "bg-secondary text-primary" : "bg-primary text-secondary"
       }`}
     >
-      <div className="mt-28 max-w-screen-2xl mx-auto">
+      <div className="mt-8 max-w-screen-2xl mx-auto">
         <div className="flex flex-col gap-6 text-center items-center">
           <h3 className="mt-12 text-sm sm:text-base md:text-lg lg:text-xl font-semibold uppercase tracking-wider">
             Works
           </h3>
-          <h2 className="font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+          <h2 className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-6xl leading-tight">
             Explore My Recent Work
           </h2>
           <p className="text-base  sm:text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto">
@@ -114,7 +114,7 @@ const Projects = React.forwardRef((props, ref) => {
                 transition={{ duration: 0.5 }}
                 className="absolute bottom-0 w-full hidden md:flex items-start gap-4 flex-col bg-secondary bg-opacity-90 backdrop-blur-sm h-1/2 px-6 sm:px-8 md:px-10 lg:px-12 pt-6 sm:pt-8"
               >
-                <h3 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black">
+                <h3 className="text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">
                   {project.title}
                 </h3>
                 <p className="text-primary text-sm sm:text-base md:text-lg lg:text-xl">
@@ -137,7 +137,8 @@ const Projects = React.forwardRef((props, ref) => {
               </motion.div>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 md:hidden">
+           <div className="w-full flex items-center justify-center">
+           <div className="grid grid-cols-2 gap-2 md:hidden">
               <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
                 View Project
               </Button>
@@ -151,12 +152,13 @@ const Projects = React.forwardRef((props, ref) => {
                 Details Projects
               </Button>
             </div>
+           </div>
           </div>
         ))}
 
         <div className="w-full text-center mt-16">
           <Button
-            className="bg-secondary border-2 px-6 sm:px-8 text-xl sm:text-2xl font-black py-4 sm:py-6 border-primary text-primary hover:bg-primary hover:text-secondary transition-colors duration-300"
+            className="bg-secondary border-2 px-6 sm:px-8 text-xl sm:text-2xl font-semibold py-4 sm:py-6 border-primary text-primary hover:bg-primary hover:text-secondary transition-colors duration-300"
             color="primary"
             variant="flat"
           >

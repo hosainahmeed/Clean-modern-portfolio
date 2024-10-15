@@ -35,7 +35,7 @@ function Contact() {
 
   return (
     <div id="contact" className="max-w-screen-2xl mx-auto">
-      <div className="bg-primary border-secondary  shadow-lg card mx-2 p-4  md:p-[100px] mt-28 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-primary border-secondary shadow-lg card mx-2 p-4  md:p-[100px] mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="text-black w-full md:w-2/4">
           <h1 className="text-2xl md:text-4xl my-2">Contact Me</h1>
           <p className="my-2">
@@ -93,10 +93,10 @@ function Contact() {
       </div>
       <div className="my-28 px-2">
         <div>
-          <h1 className="text-4xl font-black">
+          <h1 className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-6xl leading-tight text-center">
             Social Contact and Information
           </h1>
-          <h3 className="text-xl mt-4">For more information you can visit...</h3>
+          <h3 className="text-xl mt-4 text-center">For more information you can visit...</h3>
 
           <Box sx={{ flexGrow: 1, marginTop: "64px" }}>
             <Grid container spacing={2}>
@@ -104,7 +104,7 @@ function Contact() {
               <Grid item xs={12} sm={6} md={8} className="shadow-inner">
                 <Item className="h-28 flex items-center justify-center hover:shadow-2xl gap-3">
                   <FaFacebook className="text-5xl"></FaFacebook>
-                  <h1 className="text-2xl md:text-5xl font-black">
+                  <h1 className="text-2xl md:text-5xl font-semibold">
                     <a
                       target="_blank"
                       href="https://www.facebook.com/jiku.ahamed.3"
@@ -119,7 +119,7 @@ function Contact() {
               <Grid item xs={12} sm={6} md={4} className="shadow-inner">
                 <Item className="h-28 flex items-center justify-center hover:shadow-2xl flex-row md:flex-col gap-3">
                   <FaGithub className="text-5xl"></FaGithub>
-                  <h1 className="text-2xl md:text-5xl font-black">
+                  <h1 className="text-2xl md:text-5xl font-semibold">
                     <a
                       target="_blank"
                       href="https://github.com/hosainahmeed"
@@ -134,7 +134,7 @@ function Contact() {
               <Grid item xs={12} sm={6} md={4} className="shadow-inner">
                 <Item className="h-28 flex  items-center justify-center hover:shadow-2xl flex-row md:flex-col gap-3">
                   <FaLinkedin className="text-5xl"></FaLinkedin>
-                  <h1 className="text-2xl md:text-5xl font-black">
+                  <h1 className="text-2xl md:text-5xl font-semibold">
                     <a
                       target="_blank"
                       href="https://www.linkedin.com/in/hosain~ahmed/"
@@ -149,7 +149,7 @@ function Contact() {
               <Grid item xs={12} sm={6} md={8} className="shadow-inner">
                 <Item className="h-28 flex items-center justify-center hover:shadow-2xl gap-3">
                   <FaInstagram className="text-5xl"></FaInstagram>
-                  <h1 className="text-2xl md:text-5xl font-black">
+                  <h1 className="text-2xl md:text-5xl font-semibold">
                     <a
                       target="_blank"
                       href="https://www.instagram.com/hosain_ali009/"

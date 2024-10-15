@@ -157,7 +157,7 @@ export default ThreeDImage;
 //     >
 //       {/* Left Side Text Section */}
 //       <div className="w-full md:w-1/2 p-10 md:text-start gap-4 text-center md:items-start flex flex-col items-center">
-//         <h1 className="md:text-4xl lg:text-7xl text-xl font-black">
+//         <h1 className="md:text-4xl lg:text-7xl text-xl font-semibold">
 //           Hi, I’m Hosain, a Front-End Developer
 //         </h1>
 //         <p className="text-base md:text-xl">
@@ -203,8 +203,8 @@ export default ThreeDImage;
 //             {/* <div>
 //               {overView.map((item) => (
 //                 <div className="w-full h-1/3 bg-black mt-2 flex items-center justify-center flex-col rounded-xl text-white" key={item._id}>
-//                   <h1 className="text-4xl font-black">{item.title}</h1>
-//                   <h1 className="text-4xl font-black">{item.number}</h1>
+//                   <h1 className="text-4xl font-semibold">{item.title}</h1>
+//                   <h1 className="text-4xl font-semibold">{item.number}</h1>
 //                   <img src={item.image} />
 //                 </div>
 //               ))}-
@@ -242,7 +242,7 @@ export default ThreeDImage;
 //   return (
 //     <div className="px-28 relative bg-green-700 py-28">
 //       <div className=" w-full px-28 border-2 justify-center  p-10 md:text-start gap-4 text-center md:items-start flex flex-col items-center">
-//          <h1 className="md:text-4xl lg:text-7xl text-xl font-black">
+//          <h1 className="md:text-4xl lg:text-7xl text-xl font-semibold">
 //            Hi, I’m Hosain, a Front-End Developer
 //          </h1>
 //          <p className="text-base md:text-xl">

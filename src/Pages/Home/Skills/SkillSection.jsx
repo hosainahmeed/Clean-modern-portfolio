@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import Services from "./Services";
 
 function SkillSection() {
-  const [selectedSkill, setSelectedSkill] = useState(null);
+  // const [selectedSkill, setSelectedSkill] = useState(null);
   const [currentPage, setCurrentPage] = useState({
     frontend: 0,
     backend: 0,
@@ -25,10 +25,10 @@ function SkillSection() {
   });
 
   // Handling skill click
-  const handleSkillClick = (skill) => {
-    setSelectedSkill(skill);
-    document.getElementById("my_modal_5").showModal();
-  };
+  // const handleSkillClick = (skill) => {
+  //   setSelectedSkill(skill);
+  //   document.getElementById("my_modal_5").showModal();
+  // };
 
   // Pagination handler
   const handlePageChange = (category, direction) => {
@@ -49,7 +49,7 @@ function SkillSection() {
   return (
     <div
       id="skills"
-      className="pt-28 px-4 lg:px-8 max-w-screen-2xl mx-auto text-secondary"
+      className="mt-8 px-4 lg:px-8 max-w-screen-2xl mx-auto text-secondary"
     >
       {/* top section - text content */}
       <div className="w-full space-y-8 lg:mr-12 text-center lg:text-left">
@@ -62,7 +62,7 @@ function SkillSection() {
           </div>
         ) : (
           <>
-            <h1 className="text-2xl md:text-4xl font-black text-secondary">
+            <h1 className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-6xl leading-tight text-center">
               Showcasing My Skills and Tools: What I Bring to the Table
             </h1>
             <p className="text-base md:text-lg text-secondary">
@@ -87,7 +87,7 @@ function SkillSection() {
           <div className="flex flex-col lg:flex-row justify-around gap-8 items-center py-12">
             {/* Front-end skills */}
             <div>
-              <h1 className="text-center text-2xl font-black mb-4">
+              <h1 className="text-center text-2xl font-semibold mb-4">
                 Front-end Skills
               </h1>
               {getPaginatedSkills("frontend").map((skill, index) => (
@@ -99,7 +99,7 @@ function SkillSection() {
                           index % 2 === 0 ? "timeline-end" : "timeline-start"
                         } timeline-box border-2 border-secondary bg-transparent`}
                       >
-                        <img className="w-12 h-12 object-cover h-auto" src={skill?.image} alt={`${skill.name} image`} />
+                        <img className="w-12 h-12 object-cover" src={skill?.image} alt={`${skill.name} image`} />
                         {/* <h2 className="font-semibold">{skill.name}</h2> */}
                         {/* <button
                           className="btn btn-xs btn-info"
@@ -143,7 +143,7 @@ function SkillSection() {
 
             {/* Back-end skills */}
             <div>
-              <h1 className="text-center text-2xl font-black mb-4">
+              <h1 className="text-center text-2xl font-semibold mb-4">
                 Back-end Skills
               </h1>
               {getPaginatedSkills("backend").map((skill, index) => (
@@ -200,7 +200,7 @@ function SkillSection() {
 
             {/* Tools */}
             <div>
-              <h1 className="text-center text-2xl font-black mb-4">Tools</h1>
+              <h1 className="text-center text-2xl font-semibold mb-4">Tools</h1>
               {getPaginatedSkills("tools").map((skill, index) => (
                 <div key={skill._id} className="mb-4">
                   <ul className="timeline timeline-vertical">
@@ -256,7 +256,7 @@ function SkillSection() {
       </div>
 
       {/* Dynamic Modal */}
-      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+      {/* <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           {selectedSkill && (
             <div>
@@ -288,7 +288,7 @@ function SkillSection() {
             </button>
           </div>
         </div>
-      </dialog>
+      </dialog> */}
       <Services />
     </div>
   );

@@ -3,6 +3,47 @@
 @tailwind utilities;
 
 html {
-  user-select: none;
+  /* user-select: none; */
   scroll-behavior: smooth;
+}
+
+
+
+.animate-circle{
+  animation: animate 2s linear infinite;
+}
+
+
+@keyframes animate {
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(180deg);
+  }
+  50%{
+    transform: rotate(120deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+.animation {
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20%);
+  }
 }

@@ -20,26 +20,10 @@ function NavbarHeader() {
   const navigate = useNavigate();
   const location = useLocation();
   const chagedirecotry = location.pathname !== "/";
-  const homedirectory = location.pathname === "/";
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  console.log(scrollPosition);
 
   // const { user } = useAuth();
 
@@ -59,7 +43,8 @@ function NavbarHeader() {
   //     });
   // };
 
-  const activeLinkStyle = "bg-secondary text-primary px-6 py-2";
+  const activeLinkStyle = "border-b-2 border-b-secondary";
+  // const activeLinkStyle = "bg-secondary text-primary px-6 py-2";
   const linkStyle =
     "hover:bg-secondary hover:text-primary transition-all duration-300 p-2 rounded-md";
 
@@ -67,10 +52,10 @@ function NavbarHeader() {
     <Navbar className="bg-primary text-secondary">
       {/* Logo on the left side */}
       <NavbarBrand>
-        <p className="font-black text-3xl text-inherit">Hosain.</p>
+        <p className="font-semibold text-3xl text-inherit">Hosain.</p>
       </NavbarBrand>
       {/* Links in the center for larger screens */}
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden md:flex gap-4" justify="center">
         <NavbarItem>
           <NavLink
             to="/"
@@ -153,16 +138,37 @@ function NavbarHeader() {
             {chagedirecotry ? "" : "Skills & Services"}
           </Link>
         </NavbarItem>
-        <NavbarItem>
+        {/* <NavbarItem>
           <a href="/path/to/your/resume.pdf" className="text-black" download>
             <FaDownload className="inline-flex text-xl"></FaDownload>
             Resume
           </a>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
 
       {/* Contact button on the right */}
-      {scrollPosition > 500 && homedirectory && (
+
+      {chagedirecotry ? (
+        <NavbarItem>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <NavLink
+              className='bg-secondary text-primary px-6 py-2'
+              to="/"
+              smooth={true}
+              offset={-70}
+              duration={500}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
+            </NavLink>
+          </motion.div>
+        </NavbarItem>
+      ) : (
         <NavbarContent justify="end">
           <NavbarItem>
             <motion.div
@@ -172,7 +178,7 @@ function NavbarHeader() {
               transition={{ duration: 0.3 }}
             >
               <Link
-                className={activeLinkStyle}
+                className='bg-secondary text-primary px-6 py-2'
                 to="contact"
                 smooth={true}
                 offset={-70}
@@ -187,32 +193,10 @@ function NavbarHeader() {
           {/* Mobile menu toggle */}
         </NavbarContent>
       )}
-
-      {chagedirecotry && (
-        <NavbarItem>
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <NavLink
-              className={activeLinkStyle}
-              to="/"
-              smooth={true}
-              offset={-70}
-              duration={500}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </NavLink>
-          </motion.div>
-        </NavbarItem>
-      )}
       <NavbarMenuToggle
         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="sm:hidden"
+        className="md:hidden"
       />
 
       {/* Mobile dropdown menu */}
