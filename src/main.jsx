@@ -6,7 +6,7 @@ import "./index.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthProvider from "../public/Provider/AuthProvider.jsx";
-
+import { Toaster } from "react-hot-toast";
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
@@ -15,6 +15,7 @@ createRoot(document.getElementById("root")).render(
       <NextUIProvider>
         <AuthProvider>
           <RouterProvider router={router}></RouterProvider>
+          <Toaster></Toaster>
         </AuthProvider>
       </NextUIProvider>
     </QueryClientProvider>

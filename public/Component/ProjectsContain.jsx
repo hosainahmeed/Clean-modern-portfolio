@@ -5,7 +5,7 @@ function ProjectsContain({ title, description, clients, imageSrc, category }) {
     <div className="w-full h-screen">
       <div>
         <img src={test} alt="" />
-      </div>
+      </div>  
       <div>
         <h1>{title}</h1>
         <h1>{description}</h1>

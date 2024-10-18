@@ -4,6 +4,7 @@ import useAxiosPublic from "../hooks/useAxios";
 function useSkillsImage() {
   const axiosPublic = useAxiosPublic();
 
+
   const getPaginatedSkills = (category) => {
     const skillsArray = skills.filter((skill) => skill.category === category);
     return skillsArray;
@@ -19,7 +20,7 @@ function useSkillsImage() {
 //   console.log(skills);
   // Ensure skills is defined before using it
   if (!skills || isSkillsLoading) {
-    return [[], [], []]; // Return empty arrays if skills is not available
+    return [[], [], []]; 
   }
 
   const toolsImages = getPaginatedSkills("tools").map((skill) => skill?.image);

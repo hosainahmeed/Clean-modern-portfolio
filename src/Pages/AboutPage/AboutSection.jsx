@@ -1,7 +1,8 @@
 import useAxiosPublic from "../../../public/hooks/useAxios";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-
+import { Skeleton, Space } from "antd";
+import fourO4 from "../../assets/404/404.gif";
 const AboutSection = () => {
   const axiosPublic = useAxiosPublic();
   const { data: aboutData, isLoading } = useQuery({
@@ -12,12 +13,37 @@ const AboutSection = () => {
     },
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!aboutData || !aboutData.aboutSection) return <p>No data found</p>;
+  if (isLoading)
+    return (
+      <div className="flex items-center md:flex-row flex-col-reverse mx-2 justify-around gap-12 min-h-screen">
+        <div className="w-1/2">
+          <Skeleton active />
+          <Skeleton active />
+          <Skeleton active />
+          <Skeleton active />
+        </div>
+        <Space className=" h-full">
+          <Skeleton.Image
+            style={{
+              maxWidth: 460,
+              maxHeight: 460,
+              minHeight: 200,
+              minWidth: 200,
+            }}
+            active
+          />
+        </Space>
+      </div>
+    );
+  if (!aboutData || !aboutData.aboutSection)
+    return (
+      <div className="w-full h-screen">
+        <img className="w-full h-full object-cover" src={fourO4} alt="404" />
+      </div>
+    );
 
   return (
     <div className="max-w-screen-2xl mx-auto px-4 py-10">
-
       <motion.div
         className="flex flex-col-reverse md:flex-row justify-between items-start"
         initial={{ opacity: 0 }}
@@ -73,7 +99,6 @@ const AboutSection = () => {
           />
         </div>
       </motion.div>
-      
     </div>
   );
 };

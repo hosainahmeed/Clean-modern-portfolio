@@ -10,7 +10,7 @@ function Home() {
 
 
   return (
-    <div className="px-2 bg-primary relative"> 
+    <div className="px-2  relative"> 
       <Cursor className='hidden md:block' />
       <Banner projectsRef={projectsRef}></Banner>
       <Projects ref={projectsRef}></Projects>

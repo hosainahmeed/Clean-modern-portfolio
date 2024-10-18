@@ -11,6 +11,7 @@ import ManageProfile from "../AdminHome/Dashboard/ManageProfile";
 import Settings from "../AdminHome/Dashboard/Settings";
 import Login from "../AboutPage/Login";
 import AdminSecure from "../AdminHome/AdminHome/AdminSecure";
+import UpdateSkills from "../AdminHome/Dashboard/UpdateSkills";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/updateskills",
+        element: <UpdateSkills />,
       },
       {
         path: "admin",

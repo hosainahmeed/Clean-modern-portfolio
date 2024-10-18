@@ -1,15 +1,36 @@
 import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import wonerImage from "../../../../assets/BannerImages/BannerScrollImage/WonerImage.jpg";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import useSkillsImage from "../../../../../public/Component/useSkillsImage";
+import { getAuth } from "firebase/auth";
 
 
 function Banner() {
   const controlsRow1 = useAnimation();
-
   const [allSkillimage] = useSkillsImage();
+  useEffect(() => {
+    const duration = 20;
+    controlsRow1.start({
+      x: ["0%", "-100%"],
+      transition: { repeat: Infinity, duration, ease: "linear" },
+    });
+  }, [controlsRow1]);
+
+
+  const [isAdmin, setIsAdmin] = useState(false); // State to check if the user is an admin
+  const [profilePic, setProfilePic] = useState(wonerImage); 
+
+  useEffect(() => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    // Assuming user roles are stored in the user's profile, you can check if the user is an admin
+    if (user && user.email === "skyfal430@gmail.com") { // Replace with real admin check logic
+      setIsAdmin(true);
+    }
+  }, []);
 
   useEffect(() => {
     const duration = 20;
@@ -18,6 +39,16 @@ function Banner() {
       transition: { repeat: Infinity, duration, ease: "linear" },
     });
   }, [controlsRow1]);
+
+  const handleProfilePicChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const storageRef = ref(storage, `profile-pictures/${file.name}`);
+      await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(storageRef);
+      setProfilePic(url);
+    }
+  };
 
   return (
     <div className="w-full mt-12 bg-black p-6 md:p-12 px-4 rounded-lg gap-4 md:gap-8 grid-cols-1 md:grid-rows-3 max-w-screen-2xl mx-auto grid md:grid-cols-3">
@@ -71,11 +102,29 @@ function Banner() {
         </div>
       </div>
 
-      <div className="flex items-center justify-center row-span-3 md:col-span-1">
+      {/* <div className="flex items-center justify-center row-span-3 md:col-span-1">
         <img
           className="w-1/2 md:w-full md:h-full object-cover rounded-lg"
           src={wonerImage}
         />
+      </div> */}
+
+        <div className="flex items-center justify-center row-span-3 md:col-span-1 relative">
+        <img
+          className="w-1/2 md:w-full md:h-full object-cover rounded-lg"
+          src={profilePic}
+          alt="Profile"
+        />
+        {isAdmin && (
+          <div className="absolute bottom-4 right-4">
+            <input
+              type="file"
+              onChange={handleProfilePicChange} // Handle file change
+              className="opacity-0 absolute w-full h-full cursor-pointer"
+            />
+            <button className="bg-primary p-2 rounded text-white">Edit</button>
+          </div>
+        )}
       </div>
 
       <div className="bg-[#121214] rounded-lg border-[1px] border-primary py-4 px-4 text-primary col-span-1 md:col-span-2">

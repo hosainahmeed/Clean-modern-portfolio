@@ -4,6 +4,7 @@ import useAxiosPublic from "../../../../public/hooks/useAxios";
 import SkillForm from "../components/SkillsForm.jsx";
 import Swal from "sweetalert2";
 import { Skeleton } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 
 function ManageSkills() {
   const axiosPublic = useAxiosPublic();
@@ -20,8 +21,11 @@ function ManageSkills() {
     },
   });
 
-  const handleUpdate = (skillId) => {
-    console.log("Update skill with ID:", skillId);
+  const navigate = useNavigate();
+  const handleUpdate = (skillid) => {
+    console.log(skillid);
+    
+    navigate("/updateskills", { state: skillid });
   };
 
   const handleDelete = async (skillId) => {
@@ -33,7 +37,7 @@ function ManageSkills() {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Yes, delete it!",
       });
 
       if (result.isConfirmed) {
@@ -42,7 +46,7 @@ function ManageSkills() {
           Swal.fire({
             title: "Deleted!",
             text: "The skill has been deleted.",
-            icon: "success"
+            icon: "success",
           });
           // Trigger a refetch of the skills data
           queryClient.invalidateQueries(["skills"]);
@@ -55,7 +59,7 @@ function ManageSkills() {
       Swal.fire({
         title: "Error",
         text: "Failed to delete the skill. Please try again.",
-        icon: "error"
+        icon: "error",
       });
     }
   };
@@ -75,9 +79,9 @@ function ManageSkills() {
   };
 
   const handlePageChange = (category, newPage) => {
-    setCategoryPages(prev => ({
+    setCategoryPages((prev) => ({
       ...prev,
-      [category]: newPage
+      [category]: newPage,
     }));
   };
 
@@ -96,7 +100,10 @@ function ManageSkills() {
                 <div className="shadow-md rounded-lg overflow-hidden">
                   <div className="p-4">
                     {[1, 2, 3].map((itemIndex) => (
-                      <div key={itemIndex} className="flex items-center gap-3 mb-4">
+                      <div
+                        key={itemIndex}
+                        className="flex items-center gap-3 mb-4"
+                      >
                         <Skeleton className="h-3 w-2/5 rounded-lg" />
                         <div className="flex gap-2">
                           <Skeleton className="h-8 w-16 rounded" />
@@ -120,67 +127,86 @@ function ManageSkills() {
           <h2 className="text-xl font-semibold mb-4">All Skills:</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {Object.entries(categorizedSkills).map(([category, categorySkills]) => (
-              <div key={category} className="mb-8">
-                <h3 className="text-lg font-semibold mb-2">{category}</h3>
-                <div className="shadow-md rounded-lg overflow-hidden">
-                  <table className="w-full">
-                    <thead className="bg-gray-200">
-                      <tr>
-                        {["Name", "Actions"].map((header) => (
-                          <th
-                            key={header}
-                            className="py-3 px-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider"
-                          >
-                            {header}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200">
-                      {paginateSkills(categorySkills, category, itemsPerPage).map((skill) => (
-                        <tr key={skill._id} className="hover:bg-gray-50">
-                          <td className="py-4 px-4 text-sm">{skill.name}</td>
-                          <td className="py-4 px-4 text-sm">
-                            <div className="flex flex-wrap justify-start space-x-2">
-                              <button
-                                onClick={() => handleUpdate(skill._id)}
-                                className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded transition duration-300 mb-1 sm:mb-0"
-                              >
-                                Update
-                              </button>
-                              <button
-                                onClick={() => handleDelete(skill._id)}
-                                className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded transition duration-300"
-                              >
-                                Delete
-                              </button>
-                            </div>
-                          </td>
+            {Object.entries(categorizedSkills).map(
+              ([category, categorySkills]) => (
+                <div key={category} className="mb-8">
+                  <h3 className="text-lg font-semibold mb-2">{category}</h3>
+                  <div className="shadow-md rounded-lg overflow-hidden">
+                    <table className="w-full">
+                      <thead className="bg-gray-200">
+                        <tr>
+                          {["Name", "Actions"].map((header) => (
+                            <th
+                              key={header}
+                              className="py-3 px-4 text-left text-sm font-semibold text-gray-700 uppercase tracking-wider"
+                            >
+                              {header}
+                            </th>
+                          ))}
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                  <div className="flex justify-between items-center p-4 bg-gray-100">
-                    <button
-                      onClick={() => handlePageChange(category, Math.max((categoryPages[category] || 1) - 1, 1))}
-                      disabled={(categoryPages[category] || 1) === 1}
-                      className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded transition duration-300 disabled:opacity-50"
-                    >
-                      Previous
-                    </button>
-                    <span>Page {categoryPages[category] || 1}</span>
-                    <button
-                      onClick={() => handlePageChange(category, (categoryPages[category] || 1) + 1)}
-                      disabled={(categoryPages[category] || 1) * itemsPerPage >= categorySkills.length}
-                      className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded transition duration-300 disabled:opacity-50"
-                    >
-                      Next
-                    </button>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200">
+                        {paginateSkills(
+                          categorySkills,
+                          category,
+                          itemsPerPage
+                        ).map((skill) => (
+                          <tr key={skill._id} className="hover:bg-gray-50">
+                            <td className="py-4 px-4 text-sm">{skill.name}</td>
+                            <td className="py-4 px-4 text-sm">
+                              <div className="flex flex-wrap justify-start space-x-2">
+                                <button
+                                  onClick={() => handleUpdate(skill._id)}
+                                  className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded transition duration-300 mb-1 sm:mb-0"
+                                >
+                                  Update
+                                </button>
+                                <button
+                                  onClick={() => handleDelete(skill._id)}
+                                  className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded transition duration-300"
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    <div className="flex justify-between items-center p-4 bg-gray-100">
+                      <button
+                        onClick={() =>
+                          handlePageChange(
+                            category,
+                            Math.max((categoryPages[category] || 1) - 1, 1)
+                          )
+                        }
+                        disabled={(categoryPages[category] || 1) === 1}
+                        className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded transition duration-300 disabled:opacity-50"
+                      >
+                        Previous
+                      </button>
+                      <span>Page {categoryPages[category] || 1}</span>
+                      <button
+                        onClick={() =>
+                          handlePageChange(
+                            category,
+                            (categoryPages[category] || 1) + 1
+                          )
+                        }
+                        disabled={
+                          (categoryPages[category] || 1) * itemsPerPage >=
+                          categorySkills.length
+                        }
+                        className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded transition duration-300 disabled:opacity-50"
+                      >
+                        Next
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
       ) : (
