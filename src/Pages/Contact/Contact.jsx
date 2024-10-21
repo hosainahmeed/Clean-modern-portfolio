@@ -12,15 +12,21 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { SiGmail } from "react-icons/si";
+import toast from "react-hot-toast";
 
 function Contact() {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    toast.success("Successfully toasted!");
+    reset();
+    console.log(data);
+  };
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: "#fff",
@@ -34,8 +40,8 @@ function Contact() {
   }));
 
   return (
-    <div id="contact" className="max-w-screen-2xl mx-auto">
-      <div className="bg-primary border-secondary shadow-lg card mx-2 p-4  md:p-[100px] mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div className="max-w-screen-2xl mx-auto">
+      <div className="bg-primary border-secondary shadow-lg card mx-2 p-4 border-2  md:p-[100px] mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="text-black w-full md:w-2/4">
           <h1 className="text-2xl md:text-4xl my-2">Contact Me</h1>
           <p className="my-2">
@@ -53,7 +59,7 @@ function Contact() {
             text="Daulatpur, Kushtia, Bangladesh"
           />
           <ContactInfo
-            icon={<SiGmail  size={18} color="#222" />}
+            icon={<SiGmail size={18} color="#222" />}
             text="hosainahmed534745@gmail.com"
           />
         </div>
@@ -96,7 +102,9 @@ function Contact() {
           <h1 className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-6xl leading-tight text-center">
             Social Contact and Information
           </h1>
-          <h3 className="text-xl mt-4 text-center">For more information you can visit...</h3>
+          <h3 className="text-xl mt-4 text-center">
+            For more information you can visit...
+          </h3>
 
           <Box sx={{ flexGrow: 1, marginTop: "64px" }}>
             <Grid container spacing={2}>

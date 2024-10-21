@@ -130,6 +130,7 @@ function Banner() {
       <div className="bg-[#121214] rounded-lg border-[1px] border-primary py-4 px-4 text-primary col-span-1 md:col-span-2">
         <div className="relative w-full h-full overflow-hidden">
           {/* First Row (scrolls vertically with skills) */}
+          <h1 className="text-xl">Instent see my skills</h1>
           <motion.div
             className="flex items-center justify-start gap-28 h-full w-full"
             animate={controlsRow1}

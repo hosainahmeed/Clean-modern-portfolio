@@ -122,7 +122,9 @@ function ProjectCard({ project, onClick, isSelected }) {
 function AllProject() {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
-
+useEffect(()=>{
+  window.scrollTo(0,0)
+})
   useEffect(() => {
     // Simulate API call with generated data
     const fetchProjects = () => {
@@ -168,3 +170,4 @@ function AllProject() {
 }
 
 export default AllProject;
+

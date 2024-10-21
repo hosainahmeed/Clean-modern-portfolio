@@ -1,18 +1,10 @@
-import { useState } from "react";
-import { Card, Skeleton } from "@nextui-org/react";
-import { IoCheckmarkCircleSharp } from "react-icons/io5";
+import { Card, Skeleton } from "@nextui-org/react";;
 import useAxios from "../../../../public/hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import Services from "./Services";
 
 function SkillSection() {
-  // const [selectedSkill, setSelectedSkill] = useState(null);
-  const [currentPage, setCurrentPage] = useState({
-    frontend: 0,
-    backend: 0,
-    tools: 0,
-  });
-  const [pageSize] = useState(5);
+
   const axiosPublic = useAxios();
 
   // Fetching skills using react-query
@@ -24,56 +16,34 @@ function SkillSection() {
     },
   });
 
-  // Handling skill click
-  // const handleSkillClick = (skill) => {
-  //   setSelectedSkill(skill);
-  //   document.getElementById("my_modal_5").showModal();
-  // };
-
-  // Pagination handler
-  const handlePageChange = (category, direction) => {
-    setCurrentPage((prev) => {
-      const newPage =
-        direction === "next" ? prev[category] + 1 : prev[category] - 1;
-      return { ...prev, [category]: newPage };
-    });
-  };
-
-  // Get paginated skills
-  const getPaginatedSkills = (category) => {
+  const filterSkill = (category) => {
     const skillsArray = skills.filter((skill) => skill.category === category);
-    const start = currentPage[category] * pageSize;
-    return skillsArray.slice(start, start + pageSize);
+    return skillsArray;
   };
 
   return (
     <div
       id="skills"
-      className="mt-8 px-4 lg:px-8 max-w-screen-2xl mx-auto text-secondary"
+      className="mt-16 px-4 lg:px-8 max-w-screen-2xl mx-auto text-secondary"
     >
-      {/* top section - text content */}
-      <div className="w-full space-y-8 lg:mr-12 text-center lg:text-left">
+      {/* Top section */}
+      <div className="w-full space-y-8 text-center lg:text-left">
         {isSkillsLoading ? (
-          <div className="w-full flex items-center gap-3">
-            <div className="w-full flex flex-col gap-2">
-              <Skeleton className="h-3 w-3/5 rounded-lg" />
-              <Skeleton className="h-3 w-4/5 rounded-lg" />
-            </div>
-          </div>
+          <Skeleton className="h-12 w-3/5 mx-auto rounded-lg" />
         ) : (
-          <>
-            <h1 className="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-6xl leading-tight text-center">
-              Showcasing My Skills and Tools: What I Bring to the Table
+          <div className="text-center">
+            <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+              Showcasing My Skills and Tools
             </h1>
-            <p className="text-base md:text-lg text-secondary">
-              As a front-end developer, I specialize in creating dynamic and
-              responsive web applications. My expertise lies in utilizing modern
-              technologies to deliver exceptional user experiences.
+            <p className="text-lg md:text-xl text-secondary">
+              Creating dynamic, responsive web applications with cutting-edge
+              technologies.
             </p>
-          </>
+          </div>
         )}
-        <div className="divider my-4 lg:my-6"></div>
       </div>
+
+      <div className="divider my-6"></div>
 
       {/* Skill display section */}
       <div>
@@ -84,211 +54,87 @@ function SkillSection() {
             </Skeleton>
           </Card>
         ) : (
-          <div className="flex flex-col lg:flex-row justify-around gap-8 items-center py-12">
+          <div className="flex flex-col justify-center items-center gap-16 py-12">
             {/* Front-end skills */}
-            <div>
-              <h1 className="text-center text-2xl font-semibold mb-4">
+            <div className="w-full">
+              <h2 className="text-center text-2xl font-semibold mb-8 text-secondary">
                 Front-end Skills
-              </h1>
-              {getPaginatedSkills("frontend").map((skill, index) => (
-                <div key={skill._id} className="mb-4">
-                  <ul className="timeline timeline-vertical">
-                    <li>
-                      <div
-                        className={`${
-                          index % 2 === 0 ? "timeline-end" : "timeline-start"
-                        } timeline-box border-2 border-secondary bg-transparent`}
-                      >
-                        <img className="w-12 h-12 object-cover" src={skill?.image} alt={`${skill.name} image`} />
-                        {/* <h2 className="font-semibold">{skill.name}</h2> */}
-                        {/* <button
-                          className="btn btn-xs btn-info"
-                          onClick={() => handleSkillClick(skill)}
-                        >
-                          Details
-                        </button> */}
-                      </div>
-                      <div className="timeline-middle">
-                        <IoCheckmarkCircleSharp />
-                      </div>
-                      <hr />
-                    </li>
-                  </ul>
-                </div>
-              ))}
-              {/* Pagination Controls */}
-              <div className="flex justify-center gap-4 mt-4">
-                <button
-                  className="btn btn-xs text-white bg-secondary"
-                  disabled={currentPage.frontend === 0}
-                  onClick={() => handlePageChange("frontend", "prev")}
-                >
-                  Previous
-                </button>
-                <button
-                  className="btn btn-xs text-white bg-secondary"
-                  disabled={
-                    currentPage.frontend + 1 >=
-                    Math.ceil(
-                      (skills.filter((skill) => skill.category === "frontend")
-                        .length || 0) / pageSize
-                    )
-                  }
-                  onClick={() => handlePageChange("frontend", "next")}
-                >
-                  Next
-                </button>
+              </h2>
+              <div className="grid gird-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {filterSkill("frontend").map((skill) => (
+                  <div
+                    key={skill._id}
+                    className="group hover:scale-105 transition-all duration-300 ease-in-out"
+                  >
+                    <div className="p-6 shadow-lg rounded-xl flex items-center justify-center flex-col bg-white">
+                      <img
+                        className="w-12 h-12 object-cover mx-auto"
+                        src={skill?.image}
+                        alt={skill.name}
+                      />
+                      <h3 className="mt-4 text-lg font-medium text-secondary">
+                        {skill.name}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* Back-end skills */}
-            <div>
-              <h1 className="text-center text-2xl font-semibold mb-4">
+            <div className="w-full">
+              <h2 className="text-center text-2xl font-semibold mb-8 text-secondary">
                 Back-end Skills
-              </h1>
-              {getPaginatedSkills("backend").map((skill, index) => (
-                <div key={skill._id} className="mb-4">
-               
-                  <ul className="timeline timeline-vertical">
-                    <li>
-                      <div
-                        className={`${
-                          index % 2 === 0 ? "timeline-end" : "timeline-start"
-                        } timeline-box border-2 border-secondary bg-transparent flex flex-col items-center gap-3`}
-                      >
-                        <img className="w-12 h-12 object-cover" src={skill?.image} alt={`${skill.name} image`} />
-                        {/* <h2 className="font-semibold">{skill.name}</h2> */}
-                        {/* <button
-                          className="btn btn-xs btn-info"
-                          onClick={() => handleSkillClick(skill)}
-                        >
-                          Details
-                        </button> */}
-                      </div>
-                      <div className="timeline-middle">
-                        <IoCheckmarkCircleSharp />
-                      </div>
-                      <hr />
-                    </li>
-                  </ul>
-                </div>
-              ))}
-              {/* Pagination Controls */}
-              <div className="flex justify-center gap-4 mt-4">
-                <button
-                  className="btn btn-xs btn-primary"
-                  disabled={currentPage.backend === 0}
-                  onClick={() => handlePageChange("backend", "prev")}
-                >
-                  Previous
-                </button>
-                <button
-                  className="btn btn-xs btn-primary"
-                  disabled={
-                    currentPage.backend + 1 >=
-                    Math.ceil(
-                      (skills.filter((skill) => skill.category === "backend")
-                        .length || 0) / pageSize
-                    )
-                  }
-                  onClick={() => handlePageChange("backend", "next")}
-                >
-                  Next
-                </button>
+              </h2>
+              <div className="grid gird-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {filterSkill("backend").map((skill) => (
+                  <div
+                    key={skill._id}
+                    className="group hover:scale-105 transition-all duration-300 ease-in-out"
+                  >
+                    <div className="p-6 shadow-lg rounded-xl flex items-center justify-center flex-col bg-white group-hover:bg-secondary-light">
+                      <img
+                        className="w-12 h-12 object-cover mx-auto"
+                        src={skill?.image}
+                        alt={skill.name}
+                      />
+                      <h3 className="mt-4 text-lg font-medium text-secondary">
+                        {skill.name}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* Tools */}
-            <div>
-              <h1 className="text-center text-2xl font-semibold mb-4">Tools</h1>
-              {getPaginatedSkills("tools").map((skill, index) => (
-                <div key={skill._id} className="mb-4">
-                  <ul className="timeline timeline-vertical">
-                    <li>
-                      <div
-                        className={`${
-                          index % 2 === 0 ? "timeline-end" : "timeline-start"
-                        } timeline-box border-2 border-secondary bg-transparent`}
-                      >
-                        <img className="w-12 h-12 object-cover" src={skill?.image} alt={`${skill.name} image`} />
-                        {/* <h2 className="font-semibold">{skill.name}</h2> */}
-                        {/* <button
-                          className="btn btn-xs btn-info"
-                          onClick={() => handleSkillClick(skill)}
-                        >
-                          Details
-                        </button> */}
-                      </div>
-                      <div className="timeline-middle">
-                        <IoCheckmarkCircleSharp />
-                      </div>
-                      <hr />
-                    </li>
-                  </ul>
-                </div>
-              ))}
-              {/* Pagination Controls */}
-              <div className="flex justify-center gap-4 mt-4">
-                <button
-                  className="btn btn-xs bg-secondary text-primary"
-                  disabled={currentPage.tools === 0}
-                  onClick={() => handlePageChange("tools", "prev")}
-                >
-                  Previous
-                </button>
-                <button
-                  className="btn btn-xs bg-secondary text-primary"
-                  disabled={
-                    currentPage.tools + 1 >=
-                    Math.ceil(
-                      (skills.filter((skill) => skill.category === "tools")
-                        .length || 0) / pageSize
-                    )
-                  }
-                  onClick={() => handlePageChange("tools", "next")}
-                >
-                  Next
-                </button>
+            <div className="w-full">
+              <h2 className="text-center text-2xl font-semibold mb-8 text-secondary">
+                Tools
+              </h2>
+              <div className="grid gird-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {filterSkill("tools").map((skill) => (
+                  <div
+                    key={skill._id}
+                    className="group hover:scale-105 transition-all duration-300 ease-in-out"
+                  >
+                    <div className="p-6 shadow-lg rounded-xl flex items-center justify-center flex-col bg-white group-hover:bg-secondary-light">
+                      <img
+                        className="w-12 h-12 object-cover mx-auto"
+                        src={skill?.image}
+                        alt={skill.name}
+                      />
+                      <h3 className="mt-4 text-lg font-medium text-secondary group-hover:text-white">
+                        {skill.name}
+                      </h3>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         )}
       </div>
-
-      {/* Dynamic Modal */}
-      {/* <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
-          {selectedSkill && (
-            <div>
-              <h1 className="text-2xl font-bold mb-2">
-                Skill: {selectedSkill.name}
-              </h1>
-              <img
-                src={selectedSkill?.image}
-                alt={selectedSkill.name}
-                className="w-48 object-cover rounded-lg mb-4"
-              />
-              <p className="font-semibold">
-                Proficiency: {selectedSkill.proficiency}
-              </p>
-              <p className="font-semibold">
-                Experience: {selectedSkill.experience_years} years
-              </p>
-              <p className="text-sm text-gray-600 mt-2">
-                {selectedSkill.description}
-              </p>
-            </div>
-          )}
-          <div className="modal-action">
-            <button
-              className="btn"
-              onClick={() => document.getElementById("my_modal_5").close()}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </dialog> */}
       <Services />
     </div>
   );
