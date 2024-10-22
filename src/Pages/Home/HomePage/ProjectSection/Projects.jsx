@@ -2,20 +2,28 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@nextui-org/react";
+import bites from '../../../../assets/Projects/Bites.png'
+import med from '../../../../assets/Projects/med.png'
 
 // Sample project data
 const projectData = [
   {
     _id: 1,
-    title: "Weather App",
+    title: "Medical",
     description: "A responsive web app to check real-time weather updates.",
-    img: "https://mixdesign.club/themeforest/blayden/img/demo/screens/1.webp",
+    img: bites,
+    clientCode: `https://github.com/hosainahmeed/bistro-boss-client`,
+    serverCode: `https://github.com/hosainahmeed/bistro-boss-server`,
+    liveSite:`https://bistro-boss-8d78e.firebaseapp.com/`,
   },
   {
     _id: 2,
-    title: "Portfolio Website",
-    description: "A personal portfolio website to showcase my work.",
-    img: "https://mixdesign.club/themeforest/blayden/img/demo/screens/2.webp",
+    title: "Medical Center",
+    description: "A responsive web app to check real-time weather updates.",
+    img: med,
+    clientCode: `https://github.com/hosainahmeed/Docs-House-Client`,
+    serverCode: `https://github.com/hosainahmeed/Docs-House-server`,
+    liveSite:`https://docshouse-8de58.web.app`,
   },
   // Add more projects as needed
 ];
@@ -104,7 +112,7 @@ const Projects = React.forwardRef((props, ref) => {
               className="w-full h-[250px] sm:h-[350px] md:h-[500px] lg:h-[650px] relative rounded-xl bg-slate-500 overflow-hidden shadow-lg transition-transform duration-300 hover:scale-[1.02]"
             >
               <img
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover"
                 src={project.img}
                 alt={project.title}
               />
@@ -122,16 +130,13 @@ const Projects = React.forwardRef((props, ref) => {
                 </p>
                 <div className="flex gap-2">
                   <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                    View Project
+                    <a href={project.liveSite} target="_blank">View Project</a>
                   </Button>
                   <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                    Clien side code
+                   <a href={project.clientCode} target="_blank"> Clien side code</a>
                   </Button>
                   <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                    Server side code
-                  </Button>
-                  <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                    Details Projects
+                    <a href={project.serverCode} target="_blank">Server side code</a>
                   </Button>
                 </div>
               </motion.div>
@@ -147,9 +152,6 @@ const Projects = React.forwardRef((props, ref) => {
               </Button>
               <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
                 Server side code
-              </Button>
-              <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                Details Projects
               </Button>
             </div>
            </div>

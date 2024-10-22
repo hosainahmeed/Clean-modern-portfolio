@@ -122,9 +122,9 @@ function ProjectCard({ project, onClick, isSelected }) {
 function AllProject() {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
-useEffect(()=>{
-  window.scrollTo(0,0)
-})
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   useEffect(() => {
     // Simulate API call with generated data
     const fetchProjects = () => {
@@ -142,7 +142,14 @@ useEffect(()=>{
   return (
     <div className="bg-[#000]">
       <div className="max-w-screen-2xl mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8 text-center text-white">All Projects</h1>
+        <h1 className="text-4xl font-bold mb-8 text-center text-white">
+          All Projects
+        </h1>
+        <p className="text-2xl md:text-4xl text-center animate-pulse font-bold my-12 text-red-600">
+          I haven’t finished my work yet, and I’m facing some issues with Vercel
+          deployment, which caused me to lose many of my projects. This is just
+          for demo purposes.
+        </p>
         <motion.div
           layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-8 gap-2 "
@@ -170,4 +177,3 @@ useEffect(()=>{
 }
 
 export default AllProject;
-

@@ -6,7 +6,6 @@ import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import useSkillsImage from "../../../../../public/Component/useSkillsImage";
 import { getAuth } from "firebase/auth";
 
-
 function Banner() {
   const controlsRow1 = useAnimation();
   const [allSkillimage] = useSkillsImage();
@@ -18,16 +17,16 @@ function Banner() {
     });
   }, [controlsRow1]);
 
-
   const [isAdmin, setIsAdmin] = useState(false); // State to check if the user is an admin
-  const [profilePic, setProfilePic] = useState(wonerImage); 
+  const [profilePic, setProfilePic] = useState(wonerImage);
 
   useEffect(() => {
     const auth = getAuth();
     const user = auth.currentUser;
 
     // Assuming user roles are stored in the user's profile, you can check if the user is an admin
-    if (user && user.email === "skyfal430@gmail.com") { // Replace with real admin check logic
+    if (user && user.email === "skyfal430@gmail.com") {
+      // Replace with real admin check logic
       setIsAdmin(true);
     }
   }, []);
@@ -72,13 +71,22 @@ function Banner() {
           </button>
           <div className="flex gap-2">
             <div className="p-2 border-2 border-white rounded-lg hover:scale-105 transition-all">
-              <FaLinkedin style={{ fontSize: "20px" }} />
+              <a
+                href="https://www.linkedin.com/in/hosain~ahmed/"
+                target="_blank"
+              >
+                <FaLinkedin style={{ fontSize: "20px" }} />
+              </a>
             </div>
             <div className="p-2 border-2 border-white rounded-lg hover:scale-105 transition-all">
-              <FaGithub style={{ fontSize: "20px" }} />
+              <a href="https://github.com/hosainahmeed" target="_blank">
+                <FaGithub style={{ fontSize: "20px" }} />
+              </a>
             </div>
             <div className="p-2 border-2 border-white rounded-lg hover:scale-105 transition-all">
-              <FaFacebook style={{ fontSize: "20px" }} />
+              <a href="https://www.facebook.com/jiku.ahamed.3" target="_blank">
+                <FaFacebook style={{ fontSize: "20px" }} />
+              </a>
             </div>
             <div>
               <div className="w-[40px] animate-circle">
@@ -109,7 +117,7 @@ function Banner() {
         />
       </div> */}
 
-        <div className="flex items-center justify-center row-span-3 md:col-span-1 relative">
+      <div className="flex items-center justify-center row-span-3 md:col-span-1 relative">
         <img
           className="w-1/2 md:w-full md:h-full object-cover rounded-lg"
           src={profilePic}
@@ -143,9 +151,13 @@ function Banner() {
                 {skill}
               </div>
             ))} */}
-              {allSkillimage?.map((src, index) => (
-                <img className="w-12 animate-bounce bg-white rounded-lg" key={index} src={src} />
-              ))}
+            {allSkillimage?.map((src, index) => (
+              <img
+                className="w-12 animate-bounce bg-white rounded-lg"
+                key={index}
+                src={src}
+              />
+            ))}
           </motion.div>
         </div>
       </div>
