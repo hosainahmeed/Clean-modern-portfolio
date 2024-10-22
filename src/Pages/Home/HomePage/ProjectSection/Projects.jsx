@@ -2,30 +2,32 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@nextui-org/react";
-import bites from '../../../../assets/Projects/Bites.png'
-import med from '../../../../assets/Projects/med.png'
+import bites from "../../../../assets/Projects/Bites.png";
+import med from "../../../../assets/Projects/med.png";
 
 // Sample project data
 const projectData = [
   {
     _id: 1,
     title: "Medical",
-    description: "A responsive web app to check real-time weather updates.",
+    description:
+      "A comprehensive medical web app designed to streamline patient services and offer an intuitive user experience, featuring real-time appointment booking and health updates.",
     img: bites,
     clientCode: `https://github.com/hosainahmeed/bistro-boss-client`,
     serverCode: `https://github.com/hosainahmeed/bistro-boss-server`,
-    liveSite:`https://bistro-boss-8d78e.firebaseapp.com/`,
+    liveSite: `https://bistro-boss-8d78e.firebaseapp.com/`,
   },
   {
     _id: 2,
     title: "Medical Center",
-    description: "A responsive web app to check real-time weather updates.",
+    description:
+      "A dynamic medical center platform offering seamless access to patient records, doctor profiles, and appointment management with real-time updates and modern UI.",
     img: med,
     clientCode: `https://github.com/hosainahmeed/Docs-House-Client`,
     serverCode: `https://github.com/hosainahmeed/Docs-House-server`,
-    liveSite:`https://docshouse-8de58.web.app`,
+    liveSite: `https://docshouse-8de58.web.app`,
   },
-  // Add more projects as needed
+
 ];
 
 const Projects = React.forwardRef((props, ref) => {
@@ -130,31 +132,38 @@ const Projects = React.forwardRef((props, ref) => {
                 </p>
                 <div className="flex gap-2">
                   <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                    <a href={project.liveSite} target="_blank">View Project</a>
+                    <a href={project.liveSite} target="_blank">
+                      View Project
+                    </a>
                   </Button>
                   <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                   <a href={project.clientCode} target="_blank"> Clien side code</a>
+                    <a href={project.clientCode} target="_blank">
+                      {" "}
+                      Clien side code
+                    </a>
                   </Button>
                   <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                    <a href={project.serverCode} target="_blank">Server side code</a>
+                    <a href={project.serverCode} target="_blank">
+                      Server side code
+                    </a>
                   </Button>
                 </div>
               </motion.div>
             </div>
 
-           <div className="w-full flex items-center justify-center">
-           <div className="grid grid-cols-2 gap-2 md:hidden">
-              <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                View Project
-              </Button>
-              <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                Clien side code
-              </Button>
-              <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                Server side code
-              </Button>
+            <div className="w-full flex items-center justify-center">
+              <div className="grid grid-cols-2 gap-2 md:hidden">
+                <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                  View Project
+                </Button>
+                <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                  Clien side code
+                </Button>
+                <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
+                  Server side code
+                </Button>
+              </div>
             </div>
-           </div>
           </div>
         ))}
 
