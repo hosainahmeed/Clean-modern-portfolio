@@ -5,7 +5,7 @@ import wonerImage from "../../../../assets/BannerImages/BannerScrollImage/WonerI
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import useSkillsImage from "../../../../../public/Component/useSkillsImage";
 import { getAuth } from "firebase/auth";
-
+import resume from '../../../../../public/Resume/hosainali.pdf'
 function Banner() {
   const controlsRow1 = useAnimation();
   const [allSkillimage] = useSkillsImage();
@@ -64,7 +64,7 @@ function Banner() {
         </h1>
         <div className="flex flex-col md:flex-row items-center gap-2 mt-4 md:mt-12">
           <button className="btn btn-xl md:btn-xl bg-primary text-secondary">
-            <a href="" download>
+            <a href={resume} download>
               Download resume
             </a>
             <ArrowDownwardIcon />
