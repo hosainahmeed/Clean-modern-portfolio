@@ -27,7 +27,6 @@ const projectData = [
     serverCode: `https://github.com/hosainahmeed/Docs-House-server`,
     liveSite: `https://docshouse-8de58.web.app`,
   },
-
 ];
 
 const Projects = React.forwardRef((props, ref) => {
@@ -138,7 +137,6 @@ const Projects = React.forwardRef((props, ref) => {
                   </Button>
                   <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
                     <a href={project.clientCode} target="_blank">
-                      {" "}
                       Clien side code
                     </a>
                   </Button>
@@ -154,13 +152,19 @@ const Projects = React.forwardRef((props, ref) => {
             <div className="w-full flex items-center justify-center">
               <div className="grid grid-cols-2 gap-2 md:hidden">
                 <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                  View Project
+                  <a href={project.liveSite} target="_blank">
+                    View Project
+                  </a>
                 </Button>
                 <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                  Clien side code
+                  <a href={project.clientCode} target="_blank">
+                    Clien side code
+                  </a>
                 </Button>
                 <Button className="text-primary bg-secondary border-2 border-primary hover:bg-primary hover:text-secondary transition-colors duration-300 text-sm sm:text-base md:text-lg">
-                  Server side code
+                  <a href={project.serverCode} target="_blank">
+                    Server side code
+                  </a>
                 </Button>
               </div>
             </div>
