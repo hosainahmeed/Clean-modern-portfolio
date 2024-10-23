@@ -23,7 +23,7 @@ function Contact() {
   } = useForm();
 
   const onSubmit = (data) => {
-    toast.success("Successfully toasted!");
+    toast.error("unfortunately cant send the message right now please email me!");
     reset();
     console.log(data);
   };
