@@ -7,8 +7,6 @@ import Contact from "../Contact/Contact"
 
 function Home() {
   const projectsRef = useRef()
-
-
   return (
     <div className="px-2  relative"> 
       <Cursor className='hidden md:block' />

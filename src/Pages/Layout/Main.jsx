@@ -19,9 +19,9 @@ function Main() {
     location.pathname.toLowerCase().includes("/admin");
 
   const hideFooter = location.pathname.toLowerCase() === "/about";
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
+  if (isLoading) {
+    return <Loader />;
+  }
 
   if (hideFooter) {
     return (
