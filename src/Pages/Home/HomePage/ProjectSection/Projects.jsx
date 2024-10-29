@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@nextui-org/react";
-import bites from "../../../../assets/Projects/Bites.png";
+import caff from "../../../../assets/Projects/caff.png";
 import med from "../../../../assets/Projects/med.png";
 
 // Sample project data
@@ -12,10 +12,10 @@ const projectData = [
     title: "Medical",
     description:
       "A comprehensive medical web app designed to streamline patient services and offer an intuitive user experience, featuring real-time appointment booking and health updates.",
-    img: bites,
-    clientCode: `https://github.com/hosainahmeed/bistro-boss-client`,
-    serverCode: `https://github.com/hosainahmeed/bistro-boss-server`,
-    liveSite: `https://bistro-boss-8d78e.firebaseapp.com/`,
+    img: caff,
+    clientCode: `https://github.com/hosainahmeed/Caf-Canvas-client`,
+    serverCode: `https://github.com/hosainahmeed/caff-canvas-server`,
+    liveSite: `https://coffee-rush-15b08.web.app`,
   },
   {
     _id: 2,
