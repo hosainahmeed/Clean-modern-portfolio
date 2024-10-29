@@ -7,8 +7,8 @@ const projectsData = [
     id: 1,
     title: "Caff-Canvas",
     description: "A coffee ordering web app.",
-    image: "https://picsum.photos/id/1/300/200", // Replace with actual cover image URL
-    link: "https://coffee-rush-15b08.web.app/",
+    image: "https://i.ibb.co.com/y47gCxV/Screenshot-2024-10-29-123356.png", // Replace with actual cover image URL
+    link: "https://coffee-rush-15b08.web.app",
     tags: ["React", "Firebase"],
     videoUrl: "https://www.example.com/sample-video.mp4", // Replace if you have a video URL
     serverCode: "https://github.com/hosainahmeed/caff-canvas-server",
@@ -18,7 +18,7 @@ const projectsData = [
     id: 2,
     title: "Docs House",
     description: "A document management system.",
-    image: "https://picsum.photos/id/2/300/200", // Replace with actual cover image URL
+    image: "https://i.ibb.co.com/MN7J5kZ/med.png", // Replace with actual cover image URL
     link: "https://docshouse-8de58.web.app/",
     tags: ["React", "Firebase"],
     videoUrl: "https://www.example.com/sample-video.mp4", // Replace if you have a video URL
@@ -29,7 +29,7 @@ const projectsData = [
     id: 3,
     title: "Bistro Boss",
     description: "A restaurant management app.",
-    image: "https://picsum.photos/id/3/300/200", // Replace with actual cover image URL
+    image: "https://i.ibb.co.com/prSRqLK/Delicious-Bite.jpg", // Replace with actual cover image URL
     link: "https://bistro-boss-8d78e.firebaseapp.com",
     tags: ["React", "Firebase"],
     videoUrl: "https://www.example.com/sample-video.mp4", // Replace if you have a video URL
